@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Bioartesa — Welcome Box Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #faf8f3; color: #2a2a2a; }
+
+  @page { size: A4 landscape; margin: 0; }
+
+  .page {
+    page-break-after: always;
+    width: 297mm;
+    height: 210mm;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* PORTADA */
+  .cover {
+    background: linear-gradient(135deg, #1a1410 0%, #2d2420 50%, #4a3f35 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #faf8f3;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent, transparent 35px, rgba(218,180,105,.03) 35px, rgba(218,180,105,.03) 70px),
+                repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(218,180,105,.03) 35px, rgba(218,180,105,.03) 70px);
+    pointer-events: none;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+  }
+
+  .cover-eyebrow {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #dab469;
+    margin-bottom: 25px;
+    font-weight: 600;
+  }
+
+  .cover h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .cover h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: #dab469;
+    margin-bottom: 40px;
+  }
+
+  .cover-tagline {
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #e8dcc8;
+    margin-bottom: 50px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-footer {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #dab469;
+    padding-top: 20px;
+    border-top: 1px solid rgba(218,180,105,0.4);
+  }
+
+  /* CATEGORÍA HEADER */
+  .category-header {
+    background: #2a3a2d;
+    color: #faf8f3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 0 20mm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #faf8f3;
+    padding-bottom: 20mm;
+    letter-spacing: -0.01em;
+  }
+
+  /* GRID DE PRODUCTOS */
+  .grid-page {
+    background: #faf8f3;
+    padding: 12mm 14mm;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8mm;
+    height: 100%;
+    align-content: start;
+  }
+
+  /* SUBCATEGORÍA dentro de grid */
+  .subcategory-label {
+    grid-column: 1 / -1;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2a3a2d;
+    margin-top: 6mm;
+    padding: 4mm 0;
+    border-bottom: 1px solid #e8dcc8;
+  }
+
+  .product {
+    background: white;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-image {
+    background: #2a3a2d;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .product-image img {
+    max-width: 75%;
+    max-height: 75%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+  }
+
+  .product-info {
+    padding: 6mm;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5mm;
+    flex: 1;
+  }
+
+  .product-badges {
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: "DM Sans", sans-serif;
+    font-size: 6px;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 1px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    border: 0.5px solid;
+  }
+  .badge-bio { border-color: #6b7455; color: #6b7455; }
+  .badge-gf { border-color: #b5824f; color: #b5824f; }
+  .badge-veg { border-color: #a06b52; color: #a06b52; }
+
+  .product-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #2a2a2a;
+  }
+
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 3mm;
+    border-top: 0.5px solid #e8dcc8;
+    margin-top: auto;
+  }
+
+  .product-price {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #dab469;
+  }
+
+  .product-weight {
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    color: #aaa;
+  }
+
+  /* CONTACTO */
+  .contact-page {
+    background: linear-gradient(135deg, #1a1410 0%, #2d2420 50%, #4a3f35 100%);
+    color: #faf8f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-page h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: #dab469;
+    margin-bottom: 30px;
+  }
+
+  .contact-page p {
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: #d4c4b0;
+    letter-spacing: 0.5px;
+  }
+
+  .divider {
+    width: 80px;
+    height: 1px;
+    background: rgba(218,180,105,0.4);
+    margin: 30px auto;
+  }
+
+  @media print { html, body { background: white; } }
+</style>
+</head>
+<body>
+
+<!-- PORTADA (página 1) -->
+<div class="page cover" data-bookmark="Portada">
+  <div class="cover-content">
+    <p class="cover-eyebrow">Bioartesa 2012 · Castilléjar, Granada</p>
+    <h1>Bioartesa</h1>
+    <h2>Welcome Box Collection</h2>
+    <p class="cover-tagline">Panadería artesanal, chocolates, frutos secos y deshidratados ecológicos. Selecciona cada producto con identidad propia — curación premium para welcome boxes de hoteles de lujo.</p>
+    <p class="cover-footer">100% Ecológico · Certificado Bio · Curación Artesanal</p>
+  </div>
+</div>
+
+<script>
+// DATOS DE PRODUCTOS CON SUBCATEGORÍAS
+const PRODUCTS_BY_CATEGORY = {
+  "Panadería y repostería": {
+    subcats: {
+      "Galletas": [
+        {"id": 11238, "nombre": "Galletas con pistacho y chocolate Sin gluten Bio 150gr", "precio": 3.95, "bio": true, "sinGluten": true, "vegano": false, "img": "images/11238.png"},
+        {"id": 1924, "nombre": "Galletas de avena con naranja y chocolate Bio – 150gr", "precio": 3.95, "bio": true, "sinGluten": false, "vegano": true, "img": "images/1924.png"}
+      ],
+      "Galletas Sin Gluten": [
+        {"id": 1354, "nombre": "Galletas de arroz con coco y baobab sin gluten Bio – 135gr", "precio": 4.89, "bio": true, "sinGluten": true, "vegano": false, "img": "images/1354.png"},
+        {"id": 1352, "nombre": "Galletas de arroz con arándanos y chía sin gluten Bio – 135gr", "precio": 4.89, "bio": true, "sinGluten": true, "vegano": false, "img": "images/1352.png"},
+        {"id": 2422, "nombre": "Galletas de trigo sarraceno y coco sin gluten certificadas Bio – 150gr", "precio": 4.27, "bio": true, "sinGluten": true, "vegano": true, "img": "images/2422.png"}
+      ],
+      "Crespillos": [
+        {"id": 1896, "nombre": "Crespillos de espelta con tomate y ajo Bio – 150gr", "precio": 3.69, "bio": true, "sinGluten": false, "vegano": true, "img": "images/1896.png"},
+        {"id": 1894, "nombre": "Crespillos de espelta con cañamones Bio – 150gr", "precio": 3.69, "bio": true, "sinGluten": false, "vegano": true, "img": "images/1894.png"},
+        {"id": 1892, "nombre": "Crespillos de espelta con pipas y sésamo Bio – 150gr", "precio": 3.69, "bio": true, "sinGluten": false, "vegano": true, "img": "images/1892.png"}
+      ],
+      "Panes": [
+        {"id": 11234, "nombre": "Pan trigo sarraceno 100% con semillas Bio Sin gluten – 450gr", "precio": 5.04, "bio": true, "sinGluten": true, "vegano": true, "img": "images/11234.png"},
+        {"id": 10651, "nombre": "Pan de trigo sarraceno 100% Sin gluten certificado Bio – 445gr", "precio": 6.19, "bio": true, "sinGluten": true, "vegano": true, "img": "images/10651.png"},
+        {"id": 4502, "nombre": "Pan proteico sin gluten certificado Bio – 445gr", "precio": 6.75, "bio": true, "sinGluten": true, "vegano": true, "img": "images/4502.png"}
+      ],
+      "Bizcochos": [
+        {"id": 11232, "nombre": "Bizcocho de avena con cacao sin gluten Bio 340gr", "precio": 5.11, "bio": true, "sinGluten": true, "vegano": false, "img": "images/11232.png"},
+        {"id": 1967, "nombre": "Bizcocho de espelta con zanahoria sin lactosa Bio – 340gr", "precio": 5.11, "bio": true, "sinGluten": false, "vegano": false, "img": "images/1967.png"}
+      ]
+    }
+  },
+  "Chocolates": {
+    subcats: {
+      "Tabletas": [
+        {"id": 1541, "nombre": "Tableta de Chocolate negro 55% con frambuesa Bio – 90gr", "precio": 4.01, "bio": true, "sinGluten": false, "vegano": true, "img": "images/1541.png"},
+        {"id": 216, "nombre": "Tableta de Chocolate extra negro 85% Bio – 90gr", "precio": 4.86, "bio": true, "sinGluten": false, "vegano": true, "img": "images/216.png"},
+        {"id": 212, "nombre": "Tableta de Chocolate extra negro 72% de cacao con sal marina Bio – 90gr", "precio": 4.39, "bio": true, "sinGluten": false, "vegano": true, "img": "images/212.png"}
+      ],
+      "Cremas de Cacao": [
+        {"id": 208, "nombre": "Cacao en polvo Bio – 200gr", "precio": 8.15, "bio": true, "sinGluten": true, "vegano": true, "img": "images/208.png"},
+        {"id": 206, "nombre": "Crema de cacao sin azúcar añadido Bio – 200gr", "precio": 8.11, "bio": true, "sinGluten": true, "vegano": true, "img": "images/206.png"},
+        {"id": 204, "nombre": "Crema de cacao con avellanas y el 22% proteínas Bio – 200gr", "precio": 6.4, "bio": true, "sinGluten": true, "vegano": true, "img": "images/204.png"}
+      ]
+    }
+  },
+  "Frutos secos": {
+    subcats: {
+      "Almendras": [
+        {"id": 1726, "nombre": "Almendras sin piel cruda Bio – 250gr", "precio": 6.47, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1726.png"},
+        {"id": 1709, "nombre": "Almendra con piel cruda Bio – 250gr", "precio": 5.71, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1709.png"}
+      ],
+      "Pistachos": [
+        {"id": 1804, "nombre": "Pistacho natural pelado Bio – 100gr", "precio": 4.89, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1804.png"},
+        {"id": 1789, "nombre": "Pistacho natural Bio – 250gr", "precio": 6.93, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1789.png"}
+      ],
+      "Nueces": [
+        {"id": 1764, "nombre": "Nueces mitades Bio – 250gr", "precio": 5.33, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1764.png"},
+        {"id": 7242, "nombre": "Nueces Pecanas Bio – 250gr", "precio": 8.98, "bio": true, "sinGluten": true, "vegano": true, "img": "images/7242.png"}
+      ],
+      "Mix": [
+        {"id": 1273, "nombre": "Mix frutos secos Bio – 250gr", "precio": 5.68, "bio": true, "sinGluten": false, "vegano": true, "img": "images/1273.png"}
+      ]
+    }
+  },
+  "Frutas deshidratadas": {
+    subcats: {
+      "Tropical": [
+        {"id": 1585, "nombre": "Plátano deshidratado Bio – 100gr", "precio": 4.63, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1585.png"},
+        {"id": 1580, "nombre": "Piña deshidratada Bio – 100gr", "precio": 4.81, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1580.png"},
+        {"id": 173, "nombre": "Mango deshidratado Bio – 100gr", "precio": 3.15, "bio": true, "sinGluten": true, "vegano": true, "img": "images/173.png"}
+      ],
+      "Bayas": [
+        {"id": 1418, "nombre": "Arándanos rojos deshidratados sin azúcar añadida Bio – 100gr", "precio": 3.77, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1418.png"},
+        {"id": 1576, "nombre": "Moras blancas deshidratadas Bio – 75gr", "precio": 3.04, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1576.png"},
+        {"id": 1546, "nombre": "Bayas de goji Bio – 200gr", "precio": 5.48, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1546.png"}
+      ],
+      "Premium": [
+        {"id": 1560, "nombre": "Higos deshidratados Bio – 250gr", "precio": 3.59, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1560.png"},
+        {"id": 1562, "nombre": "Higos Deshidratados Bio – 1kg", "precio": 11.48, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1562.png"},
+        {"id": 1421, "nombre": "Orejones de albaricoque deshidratados Bio – 250gr", "precio": 6.47, "bio": true, "sinGluten": true, "vegano": true, "img": "images/1421.png"}
+      ]
+    }
+  }
+};
+
+const html = document.documentElement;
+
+// Generar por categoría
+Object.entries(PRODUCTS_BY_CATEGORY).forEach(([cat, data]) => {
+  // Header de categoría
+  const header = document.createElement('div');
+  header.className = 'page category-header';
+  header.setAttribute('data-bookmark', cat);
+  header.innerHTML = `<h2>${cat}</h2>`;
+  html.appendChild(header);
+
+  // Generar páginas con subcategorías
+  let currentPage = null;
+  let productCount = 0;
+
+  Object.entries(data.subcats).forEach(([subcat, products]) => {
+    products.forEach(p => {
+      // Nueva página cada 9 productos
+      if (productCount % 9 === 0) {
+        if (currentPage) html.appendChild(currentPage);
+        currentPage = document.createElement('div');
+        currentPage.className = 'page grid-page';
+        productCount = 0;
+      }
+
+      // Agregar label de subcategoría si es el primer producto
+      if (productCount === 0) {
+        const label = document.createElement('div');
+        label.className = 'subcategory-label';
+        label.textContent = subcat;
+        currentPage.appendChild(label);
+      }
+
+      // Producto
+      const badges = `<div class="product-badges">
+        <span class="badge badge-bio">BIO</span>
+        ${p.sinGluten ? '<span class="badge badge-gf">SG</span>' : ''}
+        ${p.vegano ? '<span class="badge badge-veg">VEG</span>' : ''}
+      </div>`;
+
+      const weightMatch = p.nombre.match(/\d+\s*g?r/i);
+      const weight = weightMatch ? weightMatch[0] : '';
+
+      const product = document.createElement('div');
+      product.className = 'product';
+      product.innerHTML = `
+        <div class="product-image">
+          <img src="${p.img}" alt="${p.nombre}" loading="lazy" onerror="this.style.opacity=0.15">
+        </div>
+        <div class="product-info">
+          ${badges}
+          <div class="product-name">${p.nombre}</div>
+          <div class="product-footer">
+            <span class="product-price">€${p.precio.toFixed(2)}</span>
+            ${weight ? `<span class="product-weight">${weight}</span>` : ''}
+          </div>
+        </div>
+      `;
+      currentPage.appendChild(product);
+      productCount++;
+    });
+  });
+
+  if (currentPage) html.appendChild(currentPage);
+});
+
+// Página de contacto
+const contactPage = document.createElement('div');
+contactPage.className = 'page contact-page';
+contactPage.setAttribute('data-bookmark', 'Contacto');
+contactPage.innerHTML = `
+  <h2>Contacto</h2>
+  <div class="divider"></div>
+  <p>Bioartesa 2012 S.L.</p>
+  <p>Obrador Ecológico · Castilléjar, Granada</p>
+  <p>bioartesa.es</p>
+  <div class="divider" style="margin: 40px auto;"></div>
+  <p style="font-weight: 600;">Distribuido por</p>
+  <p style="font-size: 14px; color: #dab469; margin-top: 10px;">Chains of Brains</p>
+  <p>Argón 70 S.L. · Ibiza</p>
+`;
+html.appendChild(contactPage);
+
+console.log('✓ Catálogo con bookmarks generado');
+</script>
+
+</body>
+</html>

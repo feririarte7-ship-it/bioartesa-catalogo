@@ -1,0 +1,24 @@
+{
+  "name": "bioartesa-catalogo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate-pdf-playwright.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feririarte7-ship-it/bioartesa-catalogo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/feririarte7-ship-it/bioartesa-catalogo/issues"
+  },
+  "homepage": "https://github.com/feririarte7-ship-it/bioartesa-catalogo#readme",
+  "dependencies": {
+    "playwright": "^1.63.0"
+  }
+}

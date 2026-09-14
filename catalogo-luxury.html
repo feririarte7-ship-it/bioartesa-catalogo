@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bioartesa — Welcome Box Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #faf8f3; color: #2a2a2a; }
+
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  /* ESTRUCTURA BASE */
+  .page {
+    page-break-after: always;
+    width: 297mm;
+    height: 210mm;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* PORTADA LUJO */
+  .cover {
+    background: linear-gradient(135deg, #1a1410 0%, #2d2420 50%, #4a3f35 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #faf8f3;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 35px, rgba(218,180,105,.03) 35px, rgba(218,180,105,.03) 70px),
+      repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(218,180,105,.03) 35px, rgba(218,180,105,.03) 70px);
+    pointer-events: none;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+  }
+
+  .cover-eyebrow {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #dab469;
+    margin-bottom: 25px;
+    font-weight: 600;
+  }
+
+  .cover h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .cover h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: #dab469;
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
+  }
+
+  .cover-tagline {
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #e8dcc8;
+    margin-bottom: 50px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-footer {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #dab469;
+    padding-top: 20px;
+    border-top: 1px solid rgba(218,180,105,0.4);
+  }
+
+  /* SEPARADOR DE CATEGORÍA */
+  .category-intro {
+    background: linear-gradient(to right, #2d2420, #3a3030);
+    color: #faf8f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .category-intro h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 52px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #dab469;
+    letter-spacing: -0.01em;
+  }
+
+  .category-intro p {
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    color: #d4c4b0;
+    max-width: 400px;
+    line-height: 1.6;
+  }
+
+  /* GRID DE PRODUCTOS - ASIMÉTRICO */
+  .grid-page {
+    background: #faf8f3;
+    padding: 20mm 18mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 16mm 14mm;
+    height: 100%;
+    align-content: start;
+  }
+
+  /* 5 productos en patrón asimétrico: 2-2-1 */
+  .product {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .product:nth-child(5) {
+    grid-column: 1 / 2;
+  }
+
+  .product-image {
+    background: #f5f0e8;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .product-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(218,180,105,0.05), transparent);
+    pointer-events: none;
+  }
+
+  .product-image img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+  }
+
+  .product-info {
+    padding: 14mm 10mm;
+    display: flex;
+    flex-direction: column;
+    gap: 5mm;
+  }
+
+  .product-badges {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: "DM Sans", sans-serif;
+    font-size: 7px;
+    font-weight: 600;
+    padding: 3px 7px;
+    border-radius: 1px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid;
+  }
+  .badge-bio { border-color: #6b7455; color: #6b7455; }
+  .badge-gf { border-color: #b5824f; color: #b5824f; }
+  .badge-veg { border-color: #a06b52; color: #a06b52; }
+
+  .product-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: #2a2a2a;
+  }
+
+  .product-desc {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    color: #666;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6mm;
+    border-top: 1px solid #e8dcc8;
+    margin-top: auto;
+  }
+
+  .product-price {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #dab469;
+  }
+
+  .product-weight {
+    font-family: "DM Sans", sans-serif;
+    font-size: 9px;
+    color: #999;
+  }
+
+  /* CONTRAPORTADA */
+  .back-cover {
+    background: linear-gradient(135deg, #1a1410 0%, #2d2420 50%, #4a3f35 100%);
+    color: #faf8f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .back-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 35px, rgba(218,180,105,.02) 35px, rgba(218,180,105,.02) 70px),
+      repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(218,180,105,.02) 35px, rgba(218,180,105,.02) 70px);
+    pointer-events: none;
+  }
+
+  .back-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .back-cover h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #dab469;
+  }
+
+  .back-cover p {
+    font-family: "DM Sans", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    color: #d4c4b0;
+  }
+
+  .back-divider {
+    width: 80px;
+    height: 1px;
+    background: rgba(218,180,105,0.4);
+    margin: 25px auto;
+  }
+
+  .back-credits {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    color: #b8a890;
+    margin-top: 35px;
+    letter-spacing: 0.5px;
+  }
+
+  .back-web {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px;
+    margin-top: 15px;
+    color: #dab469;
+  }
+
+  @media print {
+    html, body { background: white; }
+    .page { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="page cover">
+  <div class="cover-content">
+    <p class="cover-eyebrow">Bioartesa 2012 · Castilléjar, Granada</p>
+    <h1>Bioartesa</h1>
+    <h2>Welcome Box Collection</h2>
+    <p class="cover-tagline">Panadería artesanal, chocolates, frutos secos y deshidratados ecológicos. Selecciona cada producto con identidad propia — curación premium para welcome boxes de hoteles de lujo.</p>
+    <p class="cover-footer">100% Ecológico · Certificado Bio · Curación Artesanal</p>
+  </div>
+</div>
+
+<!-- CONTENIDO DINÁMICO -->
+<script>
+const PRODUCTS = [{"id": 11238, "sku": "G.PIS150", "nombre": "Galletas con pistacho y chocolate Sin gluten Bio 150gr", "precio": 3.95, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/11238.png", "desc": "Receta ancestral con pistacho de Sicilia, chocolate ecuatoriano y mantequilla clarificada."}, {"id": 11234, "sku": "PANSS", "nombre": "Pan trigo sarraceno 100% con semillas Bio Sin gluten – 450gr", "precio": 5.04, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/11234.png", "desc": "Sin gluten, sin levadura comercial. Fermentación natural 48hr."}, {"id": 1804, "sku": "PSTP100gr", "nombre": "Pistacho natural pelado Bio – 100gr", "precio": 4.89, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1804.png", "desc": "Pistacho siciliano DOP pelado en seco, sin sal."}, {"id": 1789, "sku": "PSTCH 250GR", "nombre": "Pistacho natural Bio – 250gr", "precio": 6.93, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1789.png", "desc": "Cosecha limitada, variedad roja de las montañas de Etna."}, {"id": 1541, "sku": "21360", "nombre": "Tableta de Chocolate negro 55% con frambuesa Bio – 90gr", "precio": 4.01, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1541.png", "desc": "Cacao ecuatoriano, frambuesa liofilizada, cacao 100% nativo."}];
+
+const CATEGORY_INTROS = {
+  "Panadería y repostería": "Masa madre cultivada desde 2006. Fermentación natural, sin mejorantes de harina. Cada pieza es única.",
+  "Chocolates": "Cacao de origen único. Tempering artesanal. Notas florales y frutales en cada tableta.",
+  "Frutos secos": "Pelado en seco, sin procesamiento químico. Cosechas certificadas de regiones protected.",
+  "Deshidratados": "Deshidratación baja temperatura (42°C). Máxima retención de nutrientes."
+};
+
+const CATEGORIES = ["Panadería y repostería", "Chocolates", "Frutos secos", "Deshidratados"];
+const BY_CATEGORY = {};
+
+CATEGORIES.forEach(cat => {
+  BY_CATEGORY[cat] = PRODUCTS.filter(p => p.categoria === cat);
+});
+
+const html = document.documentElement;
+
+// Generar por categoría
+Object.entries(BY_CATEGORY).forEach(([cat, products]) => {
+  if (products.length === 0) return;
+
+  // Intro categoría
+  const intro = document.createElement('div');
+  intro.className = 'page category-intro';
+  intro.innerHTML = `
+    <h2>${cat}</h2>
+    <p>${CATEGORY_INTROS[cat] || ''}</p>
+  `;
+  html.appendChild(intro);
+
+  // Páginas de productos (5 por página)
+  for (let i = 0; i < products.length; i += 5) {
+    const page = document.createElement('div');
+    page.className = 'page grid-page';
+    const chunk = products.slice(i, i + 5);
+
+    chunk.forEach(p => {
+      const badges = `<div class="product-badges">
+        <span class="badge badge-bio">BIO</span>
+        ${p.sinGluten ? '<span class="badge badge-gf">SG</span>' : ''}
+        ${p.vegano ? '<span class="badge badge-veg">VEG</span>' : ''}
+      </div>`;
+
+      // Extraer peso del nombre (ej: "150gr", "250gr")
+      const weightMatch = p.nombre.match(/\d+\s*g?r/i);
+      const weight = weightMatch ? weightMatch[0] : '';
+
+      const product = document.createElement('div');
+      product.className = 'product';
+      product.innerHTML = `
+        <div class="product-image">
+          <img src="${p.img}" alt="${p.nombre}" loading="lazy" onerror="this.style.opacity=0.2">
+        </div>
+        <div class="product-info">
+          ${badges}
+          <div class="product-name">${p.nombre}</div>
+          <div class="product-desc">${p.desc}</div>
+          <div class="product-footer">
+            <span class="product-price">€${p.precio.toFixed(2)}</span>
+            ${weight ? `<span class="product-weight">${weight}</span>` : ''}
+          </div>
+        </div>
+      `;
+      page.appendChild(product);
+    });
+
+    html.appendChild(page);
+  }
+});
+
+// Contraportada
+const back = document.createElement('div');
+back.className = 'page back-cover';
+back.innerHTML = `
+  <div class="back-content">
+    <h3>Bioartesa 2012 S.L.</h3>
+    <p>Obrador Ecológico · Castilléjar, Granada</p>
+    <div class="back-divider"></div>
+    <p style="font-weight: 600; margin-top: 25px;">Distribuido por</p>
+    <h3 style="color: #faf8f3; margin-top: 5px;">Chains of Brains</h3>
+    <p>Curaduría de productos únicos para hoteles de lujo</p>
+    <p>Argón 70 S.L. · Ibiza</p>
+    <div class="back-divider"></div>
+    <p class="back-web">bioartesa.es</p>
+    <p class="back-credits">Catálogo edición 2026</p>
+  </div>
+`;
+html.appendChild(back);
+
+console.log('✓ Catálogo de lujo generado');
+</script>
+
+</body>
+</html>

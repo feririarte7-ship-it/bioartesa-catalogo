@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Bioartesa — Welcome Box Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #faf8f3; color: #2a2a2a; }
+
+  @page { size: A4 landscape; margin: 0; }
+
+  .page {
+    page-break-after: always;
+    width: 297mm;
+    height: 210mm;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* PORTADA */
+  .cover {
+    background: linear-gradient(135deg, #1a1410 0%, #2d2420 50%, #4a3f35 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #faf8f3;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent, transparent 35px, rgba(218,180,105,.03) 35px, rgba(218,180,105,.03) 70px),
+                repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(218,180,105,.03) 35px, rgba(218,180,105,.03) 70px);
+    pointer-events: none;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+  }
+
+  .cover-eyebrow {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #dab469;
+    margin-bottom: 25px;
+    font-weight: 600;
+  }
+
+  .cover h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .cover h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: #dab469;
+    margin-bottom: 40px;
+  }
+
+  .cover-tagline {
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #e8dcc8;
+    margin-bottom: 50px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-footer {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #dab469;
+    padding-top: 20px;
+    border-top: 1px solid rgba(218,180,105,0.4);
+  }
+
+  /* SEPARADOR DE CATEGORÍA */
+  .category-header {
+    background: linear-gradient(90deg, #2d2420 0%, #3a3030 100%);
+    color: #faf8f3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 20mm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-header::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    background: repeating-linear-gradient(90deg, transparent, transparent 25px, rgba(218,180,105,.04) 25px, rgba(218,180,105,.04) 50px);
+    pointer-events: none;
+  }
+
+  .category-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: #dab469;
+    margin-bottom: 6mm;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 2;
+  }
+
+  .category-header p {
+    font-family: "DM Sans", sans-serif;
+    font-size: 11px;
+    color: #d4c4b0;
+    max-width: 450px;
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* GRID DENSO - MICHELIN STYLE */
+  .grid-page {
+    background: #faf8f3;
+    padding: 12mm 14mm;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8mm;
+    height: 100%;
+    align-content: start;
+  }
+
+  .product {
+    background: white;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .product:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+
+  .product-image {
+    background: #f5f0e8;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .product-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(218,180,105,0.04), transparent);
+    pointer-events: none;
+  }
+
+  .product-image img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.1));
+  }
+
+  .product-info {
+    padding: 7mm 6mm;
+    display: flex;
+    flex-direction: column;
+    gap: 3mm;
+    flex: 1;
+  }
+
+  .product-badges {
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: "DM Sans", sans-serif;
+    font-size: 6px;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 1px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    border: 0.5px solid;
+  }
+  .badge-bio { border-color: #6b7455; color: #6b7455; }
+  .badge-gf { border-color: #b5824f; color: #b5824f; }
+  .badge-veg { border-color: #a06b52; color: #a06b52; }
+
+  .product-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #2a2a2a;
+  }
+
+  .product-desc {
+    font-family: "DM Sans", sans-serif;
+    font-size: 9px;
+    color: #777;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 4mm;
+    border-top: 0.5px solid #e8dcc8;
+    margin-top: auto;
+  }
+
+  .product-price {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #dab469;
+  }
+
+  .product-weight {
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    color: #aaa;
+  }
+
+  /* CONTRAPORTADA */
+  .back-cover {
+    background: linear-gradient(135deg, #1a1410 0%, #2d2420 50%, #4a3f35 100%);
+    color: #faf8f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .back-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent, transparent 35px, rgba(218,180,105,.02) 35px, rgba(218,180,105,.02) 70px),
+                repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(218,180,105,.02) 35px, rgba(218,180,105,.02) 70px);
+    pointer-events: none;
+  }
+
+  .back-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .back-cover h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #dab469;
+  }
+
+  .back-cover p {
+    font-family: "DM Sans", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    color: #d4c4b0;
+  }
+
+  .back-divider {
+    width: 80px;
+    height: 1px;
+    background: rgba(218,180,105,0.4);
+    margin: 25px auto;
+  }
+
+  .back-web {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px;
+    margin-top: 15px;
+    color: #dab469;
+  }
+
+  .back-credits {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    color: #b8a890;
+    margin-top: 35px;
+    letter-spacing: 0.5px;
+  }
+
+  @media print {
+    html, body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="page cover">
+  <div class="cover-content">
+    <p class="cover-eyebrow">Bioartesa 2012 · Castilléjar, Granada</p>
+    <h1>Bioartesa</h1>
+    <h2>Welcome Box Collection</h2>
+    <p class="cover-tagline">Panadería artesanal, chocolates, frutos secos y deshidratados ecológicos. Selecciona cada producto con identidad propia — curación premium para welcome boxes de hoteles de lujo.</p>
+    <p class="cover-footer">100% Ecológico · Certificado Bio · Curación Artesanal</p>
+  </div>
+</div>
+
+<!-- CONTENIDO DINÁMICO -->
+<script>
+const PRODUCTS = [
+  {"id": 11238, "sku": "G.PIS150", "nombre": "Galletas con pistacho y chocolate Sin gluten Bio 150gr", "precio": 3.95, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/11238.png", "desc": "Pistacho de Sicilia, chocolate ecuatoriano."},
+  {"id": 11234, "sku": "PANSS", "nombre": "Pan trigo sarraceno 100% con semillas Bio Sin gluten – 450gr", "precio": 5.04, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/11234.png", "desc": "Fermentación natural 48hr, sin aditivos."},
+  {"id": 11232, "sku": "B.AVC", "nombre": "Bizcocho de avena con cacao sin gluten Bio 340gr", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/11232.png", "desc": "Avena orgánica, cacao sin azúcar."},
+  {"id": 10719, "sku": "BP100", "nombre": "Base de pizza de trigo sarraceno (100%) Bio sin gluten Certificado (2 und de 125GR)", "precio": 6.19, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/10719.png", "desc": "100% trigo sarraceno, sin gluten."},
+  {"id": 10651, "sku": "PS100", "nombre": "Pan de trigo sarraceno 100% Sin gluten certificado Bio – 445gr", "precio": 6.19, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/10651.png", "desc": "Masa madre viva, sin conservantes."},
+  {"id": 6024, "sku": "TSA", "nombre": "Tostadas de trigo sarraceno y semillas Bio – 70gr", "precio": 3.85, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/6024.png", "desc": "Tostadas crujientes, semillas orgánicas."},
+  {"id": 4502, "sku": "", "nombre": "Pan proteico sin gluten certificado Bio – 445gr", "precio": 6.75, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/4502.png", "desc": "22% proteína vegetal, keto-friendly."},
+  {"id": 1354, "sku": "G.A.A BAO", "nombre": "Galletas de arroz con coco y baobab sin gluten Bio – 135gr", "precio": 4.89, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1354.png", "desc": "Arroz integral, baobab africano."},
+  {"id": 1364, "sku": "G.C.SA", "nombre": "Galletas de coco sin huevo con sirope de agave Bio – 150gr", "precio": 3.51, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1364.png", "desc": "Sin huevo, agave colombiano."},
+  {"id": 1541, "sku": "21360", "nombre": "Tableta de Chocolate negro 55% con frambuesa Bio – 90gr", "precio": 4.01, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1541.png", "desc": "Cacao ecuatoriano, frambuesa liofilizada."},
+  {"id": 216, "sku": "21339", "nombre": "Tableta de Chocolate extra negro 85% Bio – 90gr", "precio": 4.86, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/216.png", "desc": "85% cacao puro, nota especiada."},
+  {"id": 212, "sku": "21340", "nombre": "Tableta de Chocolate extra negro 72% de cacao con sal marina Bio – 90gr", "precio": 4.39, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/212.png", "desc": "72% cacao, sal de Guérande."},
+  {"id": 208, "sku": "CCAO200GR", "nombre": "Cacao en polvo Bio – 200gr", "precio": 8.15, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/208.png", "desc": "Cacao puro alcalinizado, sin azúcar."},
+  {"id": 206, "sku": "CREMA SIN", "nombre": "Crema de cacao sin azúcar añadido Bio – 200gr", "precio": 8.11, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/206.png", "desc": "Sin palma, sin azúcar, 100% cacao."},
+  {"id": 204, "sku": "CREMA PROTE", "nombre": "Crema de cacao con avellanas y el 22% proteínas Bio – 200gr", "precio": 6.4, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/204.png", "desc": "22% proteína, avellanas tostadas."},
+  {"id": 1804, "sku": "PSTP100gr", "nombre": "Pistacho natural pelado Bio – 100gr", "precio": 4.89, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1804.png", "desc": "Pistacho siciliano DOP, sin sal."},
+  {"id": 1789, "sku": "PSTCH 250GR", "nombre": "Pistacho natural Bio – 250gr", "precio": 6.93, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1789.png", "desc": "Variedad roja de las montañas Etna."},
+  {"id": 1781, "sku": "PÐ90GR", "nombre": "Piñones Bio – 90gr", "precio": 7.24, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1781.png", "desc": "Piñones de pino mediterráneo."},
+  {"id": 1726, "sku": "A.S.P.CRD250GR", "nombre": "Almendras sin piel cruda Bio – 250gr", "precio": 6.47, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1726.png", "desc": "Almendras de Valencia, sin tostar."},
+  {"id": 1709, "sku": "A.C.P. CR250GR", "nombre": "Almendra con piel cruda Bio – 250gr", "precio": 5.71, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1709.png", "desc": "Con piel roja, cosecha reciente."},
+  {"id": 1764, "sku": "NCE 250GR", "nombre": "Nueces mitades Bio – 250gr", "precio": 5.33, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1764.png", "desc": "Nueces francesas, mitades cuidadas."},
+  {"id": 1756, "sku": "CCH 250GR", "nombre": "Cacahuetes repelados crudos Bio – 250gr", "precio": 2.86, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1756.png", "desc": "Cacahuetes repelados en seco."},
+  {"id": 1585, "sku": "PLD100GR", "nombre": "Plátano deshidratado Bio – 100gr", "precio": 4.63, "categoria": "Frutas deshidratadas", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1585.png", "desc": "Deshidratación baja temperatura 42°C."},
+  {"id": 1580, "sku": "PÐD100GR", "nombre": "Piña deshidratada Bio – 100gr", "precio": 4.81, "categoria": "Frutas deshidratadas", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1580.png", "desc": "Piña tropical, sin azúcar añadido."},
+  {"id": 1576, "sku": "MRBL75GR", "nombre": "Moras blancas deshidratadas Bio – 75gr", "precio": 3.04, "categoria": "Frutas deshidratadas", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1576.png", "desc": "Moras blancas del Himalaya."},
+  {"id": 1571, "sku": "MIXDH200GR", "nombre": "Mix frutas deshidratadas Bio – 200gr", "precio": 5.82, "categoria": "Frutas deshidratadas", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1571.png", "desc": "Mango, piña, arándanos, coco."},
+  {"id": 1562, "sku": "HDN1KG", "nombre": "Higos Deshidratados Bio – 1kg", "precio": 11.48, "categoria": "Frutas deshidratadas", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1562.png", "desc": "Higos turcos, calidad premium."},
+  {"id": 1560, "sku": "HDN250GR", "nombre": "Higos deshidratados Bio – 250gr", "precio": 3.59, "categoria": "Frutas deshidratadas", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1560.png", "desc": "Higos turcos en porción."},
+  {"id": 1418, "sku": "ARND RJ 100GR", "nombre": "Arándanos rojos deshidratados sin azúcar añadida Bio – 100gr", "precio": 3.77, "categoria": "Frutas deshidratadas", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1418.png", "desc": "Arándanos rojos, sin azúcar."},
+  {"id": 1546, "sku": "BGD200GR", "nombre": "Bayas de goji Bio – 200gr", "precio": 5.48, "categoria": "Frutas deshidratadas", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1546.png", "desc": "Goji tibetano, nutrientes completos."}
+];
+
+const CATEGORY_INTROS = {
+  "Panadería y repostería": "Masa madre desde 2006. Fermentación natural, sin mejorantes de harina. Cada pieza es única.",
+  "Chocolates": "Cacao de origen único. Tempering artesanal. Cada tableta es una expresión de terroir.",
+  "Frutos secos": "Pelado en seco, sin procesamiento químico. Cosechas certificadas de regiones protegidas.",
+  "Frutas deshidratadas": "Deshidratación baja temperatura 42°C. Máxima retención de nutrientes y sabor."
+};
+
+const CATEGORIES = ["Panadería y repostería", "Chocolates", "Frutos secos", "Frutas deshidratadas"];
+const BY_CATEGORY = {};
+
+CATEGORIES.forEach(cat => {
+  BY_CATEGORY[cat] = PRODUCTS.filter(p => p.categoria === cat);
+});
+
+const html = document.documentElement;
+
+// Generar por categoría
+Object.entries(BY_CATEGORY).forEach(([cat, products]) => {
+  if (products.length === 0) return;
+
+  // Header categoría
+  const header = document.createElement('div');
+  header.className = 'page category-header';
+  header.innerHTML = `
+    <h2>${cat}</h2>
+    <p>${CATEGORY_INTROS[cat]}</p>
+  `;
+  html.appendChild(header);
+
+  // Páginas de productos (9 por página: grid 3x3)
+  for (let i = 0; i < products.length; i += 9) {
+    const page = document.createElement('div');
+    page.className = 'page grid-page';
+    const chunk = products.slice(i, i + 9);
+
+    chunk.forEach(p => {
+      const badges = `<div class="product-badges">
+        <span class="badge badge-bio">BIO</span>
+        ${p.sinGluten ? '<span class="badge badge-gf">SG</span>' : ''}
+        ${p.vegano ? '<span class="badge badge-veg">VEG</span>' : ''}
+      </div>`;
+
+      const weightMatch = p.nombre.match(/\d+\s*g?r/i);
+      const weight = weightMatch ? weightMatch[0] : '';
+
+      const product = document.createElement('div');
+      product.className = 'product';
+      product.innerHTML = `
+        <div class="product-image">
+          <img src="${p.img}" alt="${p.nombre}" loading="lazy" onerror="this.style.opacity=0.15">
+        </div>
+        <div class="product-info">
+          ${badges}
+          <div class="product-name">${p.nombre}</div>
+          <div class="product-desc">${p.desc}</div>
+          <div class="product-footer">
+            <span class="product-price">€${p.precio.toFixed(2)}</span>
+            ${weight ? `<span class="product-weight">${weight}</span>` : ''}
+          </div>
+        </div>
+      `;
+      page.appendChild(product);
+    });
+
+    html.appendChild(page);
+  }
+});
+
+// Contraportada
+const back = document.createElement('div');
+back.className = 'page back-cover';
+back.innerHTML = `
+  <div class="back-content">
+    <h3>Bioartesa 2012 S.L.</h3>
+    <p>Obrador Ecológico · Castilléjar, Granada</p>
+    <div class="back-divider"></div>
+    <p style="font-weight: 600; margin-top: 25px;">Distribuido por</p>
+    <h3 style="color: #faf8f3; margin-top: 5px;">Chains of Brains</h3>
+    <p>Curaduría de productos únicos para hoteles de lujo</p>
+    <p>Argón 70 S.L. · Ibiza</p>
+    <div class="back-divider"></div>
+    <p class="back-web">bioartesa.es</p>
+    <p class="back-credits">Catálogo edición 2026</p>
+  </div>
+`;
+html.appendChild(back);
+</script>
+
+</body>
+</html>

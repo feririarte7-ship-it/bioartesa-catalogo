@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bioartesa — Welcome Box — Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #f6f1e7; }
+
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  .page {
+    page-break-after: always;
+    width: 297mm;
+    height: 210mm;
+    overflow: hidden;
+  }
+
+  /* PORTADA */
+  .cover {
+    background: linear-gradient(160deg, #211c17, #332a20 65%, #8f4a30);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .cover-content {
+    position: relative;
+    z-index: 1;
+  }
+  .cover h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 62px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .cover h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: #e3b98a;
+  }
+  .cover p {
+    font-size: 13px;
+    color: #d9c9ab;
+    margin-bottom: 50px;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+  .cover-info {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #efe6d4;
+    border-top: 1px solid rgba(255,255,255,0.25);
+    padding-top: 20px;
+    font-weight: 600;
+  }
+
+  /* SEPARADOR DE CATEGORÍA */
+  .category-divider {
+    background: #2a3a2d;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .category-divider h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 48px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* GRID DE PRODUCTOS */
+  .grid-page {
+    background: #fbf8f1;
+    padding: 16mm;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12mm;
+    height: 100%;
+  }
+
+  .product-card {
+    background: #fffdf9;
+    border: 1px solid #e4dac6;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .product-photo {
+    height: 50%;
+    background: #2a3a2d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+  }
+
+  .product-photo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));
+  }
+
+  .product-body {
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .product-badges {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-size: 7px;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid;
+  }
+  .badge-bio { border-color: #6b7455; color: #6b7455; }
+  .badge-gf { border-color: #a3793a; color: #a3793a; }
+  .badge-veg { border-color: #b5613f; color: #b5613f; }
+
+  .product-name {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #241f19;
+    min-height: 28px;
+  }
+
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6px;
+    border-top: 1px solid #e4dac6;
+    margin-top: auto;
+  }
+
+  .price {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #241f19;
+  }
+
+  /* CONTRAPORTADA */
+  .back-cover {
+    background: #2a3a2d;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .back-cover h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+
+  .back-cover p {
+    font-size: 11px;
+    margin-bottom: 8px;
+    color: #e4dac6;
+  }
+
+  .back-cover .divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+    margin: 30px auto;
+  }
+
+  .back-cover .credits {
+    font-size: 10px;
+    color: #d9c9ab;
+    margin-top: 40px;
+  }
+
+  @media print {
+    html, body { background: white; }
+    .page { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="page cover">
+  <div class="cover-content">
+    <h1>Bioartesa</h1>
+    <h2>Welcome Box Collection</h2>
+    <p>Seleccioná panadería, chocolates, frutos secos y deshidratados ecológicos para componer welcome boxes con identidad propia — cada producto por debajo de 15€/unidad.</p>
+    <div class="cover-info">
+      100% Ecológico · Curación Artesanal · Sin Gluten Disponible
+    </div>
+  </div>
+</div>
+
+<!-- CONTENIDO DINÁMICO GENERADO -->
+<script>
+const PRODUCTS = [{"id": 11238, "sku": "G.PIS150", "nombre": "Galletas con pistacho y chocolate Sin gluten Bio 150gr", "precio": 3.95, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/11238.png"}, {"id": 11234, "sku": "PANSS", "nombre": "Pan trigo sarraceno 100% con semillas Bio Sin gluten – 450gr", "precio": 5.04, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/11234.png"}, {"id": 11232, "sku": "B.AVC", "nombre": "Bizcocho de avena con cacao sin gluten Bio 340gr", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/11232.png"}, {"id": 10719, "sku": "BP100", "nombre": "Base de pizza de trigo sarraceno (100%) Bio sin gluten Certificado (2 und de 125GR)", "precio": 6.19, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/10719.png"}, {"id": 10651, "sku": "PS100", "nombre": "Pan de trigo sarraceno 100% Sin gluten certificado Bio – 445gr", "precio": 6.19, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/10651.png"}, {"id": 7242, "sku": "NP150GR", "nombre": "Nueces Pecanas Bio – 250gr", "precio": 8.98, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/7242.png"}, {"id": 6024, "sku": "TSA", "nombre": "Tostadas de trigo sarraceno y semillas Bio – 70gr", "precio": 3.85, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/6024.png"}, {"id": 4502, "sku": "", "nombre": "Pan proteico sin gluten certificado Bio – 445gr", "precio": 6.75, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/4502.png"}, {"id": 2422, "sku": "", "nombre": "Galletas de trigo sarraceno y coco sin gluten certificadas Bio – 150gr", "precio": 4.27, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/2422.png"}, {"id": 1967, "sku": "BZ340GR", "nombre": "Bizcocho de espelta con zanahoria sin lactosa Bio – 340gr", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1967.png"}, {"id": 1963, "sku": "B.A", "nombre": "Bizcocho de arroz y algarroba sin lactosa Bio – 340gr", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1963.png"}, {"id": 1961, "sku": "B.TS", "nombre": "Bizcocho de trigo sarraceno sin lactosa Bio – 340gr", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1961.png"}, {"id": 1959, "sku": "BSAZ", "nombre": "Bizcocho de espelta con sirope de agave sin lactosa Bio – 340gr", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1959.png"}, {"id": 1954, "sku": "B.E.N.", "nombre": "Bizcocho de espelta con naranja confitada sin lactosa Bio – 340gr", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1954.png"}, {"id": 1952, "sku": "B.E.FR.", "nombre": "Bizcocho de espelta con frutos secos sin lactosa Bio – 340gr", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1952.png"}, {"id": 1950, "sku": "B.E.", "nombre": "Bizcocho de espelta con chocolate sin lactosa Bio – 340gr", "precio": 5.54, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1950.png"}, {"id": 1948, "sku": "B.E.CC", "nombre": "Bizcocho de espelta con cacao puro sin lactosa Bio – 340gr", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1948.png"}, {"id": 1947, "sku": "B.E.J.", "nombre": "Bizcocho de espelta con jengibre sin lactosa Bio – 340gr", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1947.png"}, {"id": 1944, "sku": "P.E.P.P", "nombre": "Pan artesano de espelta bajo en sal con levadura madre Bio – 500gr", "precio": 4.15, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1944.png"}, {"id": 1942, "sku": "P.A", "nombre": "Pan artesano de arroz Bio Sin gluten – 400gr", "precio": 4.06, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1942.png"}, {"id": 1940, "sku": "P.T.S500", "nombre": "Pan artesano de trigo sarraceno cortado Bio Sin gluten – 500gr", "precio": 4.23, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1940.png"}, {"id": 1932, "sku": "P.C.P.E", "nombre": "Pan de centeno puro Bio – 500gr", "precio": 3.69, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1932.png"}, {"id": 1930, "sku": "RNE150GR", "nombre": "Rosquillas de naranja y espelta Bio – 150gr", "precio": 4.08, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1930.png"}, {"id": 1924, "sku": "G.A.N.CH", "nombre": "Galletas de avena con naranja y chocolate Bio – 150gr", "precio": 3.95, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1924.png"}, {"id": 1921, "sku": "G.TS", "nombre": "Galletas de trigo sarraceno y algarroba Bio – 150gr", "precio": 3.53, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1921.png"}, {"id": 1916, "sku": "G.MYQ", "nombre": "Galletas andinas de maca y quinoa Bio – 150gr", "precio": 3.53, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1916.png"}, {"id": 1903, "sku": "G.TM.CYCH", "nombre": "Galletas de té matcha con chía y chocolate Bio – 150gr", "precio": 3.53, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1903.png"}, {"id": 1899, "sku": "G.AYJ", "nombre": "Galletas de avena con jengibre y chía Bio – 150gr", "precio": 3.51, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1899.png"}, {"id": 1896, "sku": "C.E.T.A.SA", "nombre": "Crespillos de espelta con tomate y ajo Bio – 150gr", "precio": 3.69, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1896.png"}, {"id": 1894, "sku": "C.E.C.", "nombre": "Crespillos de espelta con cañamones Bio – 150gr", "precio": 3.69, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1894.png"}, {"id": 1892, "sku": "C.E.P.S", "nombre": "Crespillos de espelta con pipas y sésamo Bio – 150gr", "precio": 3.69, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1892.png"}, {"id": 1887, "sku": "C.A150GR", "nombre": "Crujiente de Algas y Espelta Bio – 150gr", "precio": 4.35, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1887.png"}, {"id": 1885, "sku": "P.A.E.I160GR", "nombre": "Pan Ácimo con espelta Bio – 150gr", "precio": 3.84, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1885.png"}, {"id": 1804, "sku": "PSTP100gr", "nombre": "Pistacho natural pelado Bio – 100gr", "precio": 4.89, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1804.png"}, {"id": 1793, "sku": "PST.T.S.S", "nombre": "Pistacho tostado sin sal Bio – 100gr", "precio": 3.7, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1793.png"}, {"id": 1791, "sku": "PST.T.CS", "nombre": "Pistacho tostado con sal Bio – 100gr", "precio": 3.7, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1791.png"}, {"id": 1789, "sku": "PSTCH 250GR", "nombre": "Pistacho natural Bio – 250gr", "precio": 6.93, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1789.png"}, {"id": 1781, "sku": "PÐ90GR", "nombre": "Piñones Bio – 90gr", "precio": 7.24, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1781.png"}, {"id": 1780, "sku": "PS1KG", "nombre": "Pasas sultanas Bio – 1kg", "precio": 11.79, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1780.png"}, {"id": 1779, "sku": "PSSULT", "nombre": "Pasas sultanas Bio – 500gr", "precio": 6.29, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1779.png"}, {"id": 1778, "sku": "PS 250GR", "nombre": "Pasas sultanas Bio – 250gr", "precio": 3.67, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1778.png"}, {"id": 1774, "sku": "NM 250GR", "nombre": "Nuez de macadamia Bio – 250gr", "precio": 9.48, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1774.png"}, {"id": 1769, "sku": "NB 250GR", "nombre": "Nuez del Brasil Bio – 250gr", "precio": 10.22, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1769.png"}, {"id": 1764, "sku": "NCE 250GR", "nombre": "Nueces mitades Bio – 250gr", "precio": 5.33, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1764.png"}, {"id": 1761, "sku": "CCH1KG", "nombre": "Cacahuetes repelados crudos Bio – 1kg", "precio": 8.58, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1761.png"}, {"id": 1756, "sku": "CCH 250GR", "nombre": "Cacahuetes repelados crudos Bio – 250gr", "precio": 2.86, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1756.png"}, {"id": 1751, "sku": "AV250GR", "nombre": "Avellanas crudas Bio – 250gr", "precio": 8.34, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1751.png"}, {"id": 1746, "sku": "ANCRD100GR", "nombre": "Anacardos crudos Bio – 250gr", "precio": 5.57, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1746.png"}, {"id": 1732, "sku": "A.S.P.TO100GR", "nombre": "Almendras sin piel tostadas sin sal Bio – 100gr", "precio": 3.56, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1732.png"}, {"id": 1728, "sku": "A.S.P.TO.CS", "nombre": "Almendras sin piel tostadas con sal Bio – 100gr", "precio": 3.56, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1728.png"}, {"id": 1726, "sku": "A.S.P.CRD250GR", "nombre": "Almendras sin piel cruda Bio – 250gr", "precio": 6.47, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1726.png"}, {"id": 1713, "sku": "A.C.P.TOS100G", "nombre": "Almendras con piel tostadas sin sal Bio – 100gr", "precio": 3.24, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1713.png"}, {"id": 1711, "sku": "A.C.P.TO.S100", "nombre": "Almendras con piel tostadas con sal Bio – 100gr", "precio": 3.24, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1711.png"}, {"id": 1709, "sku": "A.C.P. CR250GR", "nombre": "Almendra con piel cruda Bio – 250gr", "precio": 5.71, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1709.png"}, {"id": 1593, "sku": "TOMTMO100GR", "nombre": "Tomate molido sin sal deshidratado Bio – 100gr", "precio": 4.13, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1593.png"}, {"id": 1589, "sku": "TOMTEN100GR", "nombre": "Tomates en mitades deshidratado sin sal Bio – 100gr", "precio": 4.1, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1589.png"}, {"id": 1585, "sku": "PLD100GR", "nombre": "Plátano deshidratado Bio – 100gr", "precio": 4.63, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1585.png"}, {"id": 1580, "sku": "PÐD100GR", "nombre": "Piña deshidratada Bio – 100gr", "precio": 4.81, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1580.png"}, {"id": 1576, "sku": "MRBL75GR", "nombre": "Moras blancas deshidratadas Bio – 75gr", "precio": 3.04, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1576.png"}, {"id": 1571, "sku": "MIXDH200GR", "nombre": "Mix frutas deshidratadas Bio – 200gr", "precio": 5.82, "categoria": "Deshidratados", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1571.png"}, {"id": 1566, "sku": "JNGBREA1KG", "nombre": "Jengibre en dados con azúcar de caña Bio – 1kg", "precio": 13.74, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1566.png"}, {"id": 1564, "sku": "JNGBREA200GR", "nombre": "Jengibre en dados con azúcar de caña Bio – 200gr", "precio": 3.57, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1564.png"}, {"id": 1562, "sku": "HDN1KG", "nombre": "Higos Deshidratados Bio – 1kg", "precio": 11.48, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1562.png"}, {"id": 1560, "sku": "HDN250GR", "nombre": "Higos deshidratados Bio – 250gr", "precio": 3.59, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1560.png"}, {"id": 1557, "sku": "COCOR1KG", "nombre": "Coco rallado Bio – 1kg", "precio": 10.59, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1557.png"}, {"id": 1556, "sku": "COCO R 250GR", "nombre": "Coco rallado Bio – 250gr", "precio": 3.98, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1556.png"}, {"id": 1555, "sku": "CHC 1KG", "nombre": "Chips de coco Bio – 1kg", "precio": 11.99, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1555.png"}, {"id": 1554, "sku": "CHC 250GR", "nombre": "Chips de coco Bio – 250gr", "precio": 3.71, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1554.png"}, {"id": 1550, "sku": "CRP250GR", "nombre": "Ciruelas pasas sin hueso Bio – 250gr", "precio": 5.46, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1550.png"}, {"id": 1546, "sku": "BGD200GR", "nombre": "Bayas de goji Bio – 200gr", "precio": 5.48, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1546.png"}, {"id": 1541, "sku": "21360", "nombre": "Tableta de Chocolate negro 55% con frambuesa Bio – 90gr", "precio": 4.01, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1541.png"}, {"id": 1537, "sku": "21361", "nombre": "Tableta de Chocolate con leche 40% de cacao con trozos de caramelo y sal marina Bio – 90gr", "precio": 3.6, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1537.png"}, {"id": 1421, "sku": "OABD4 250GR", "nombre": "Orejones de albaricoque deshidratados Bio – 250gr", "precio": 6.47, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1421.png"}, {"id": 1418, "sku": "ARND RJ 100GR", "nombre": "Arándanos rojos deshidratados sin azúcar añadida Bio – 100gr", "precio": 3.77, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1418.png"}, {"id": 1364, "sku": "G.C.SA", "nombre": "Galletas de coco sin huevo con sirope de agave Bio – 150gr", "precio": 3.51, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1364.png"}, {"id": 1354, "sku": "G.A.A BAO", "nombre": "Galletas de arroz con coco y baobab sin gluten Bio – 135gr", "precio": 4.89, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1354.png"}, {"id": 1352, "sku": "G.A.A.CH", "nombre": "Galletas de arroz con arándanos y chía sin gluten Bio – 135gr", "precio": 4.89, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1352.png"}, {"id": 1350, "sku": "G.A.A.CHO", "nombre": "Galletas de arroz con almendras y chocolate sin gluten Bio – 135gr", "precio": 4.89, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1350.png"}, {"id": 1346, "sku": "PI.PR", "nombre": "Base de Pizza proteica sin gluten certificada Bio – 2x125gr", "precio": 7.2, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1346.png"}, {"id": 1342, "sku": "P.S.BPSG", "nombre": "Base de pizza sin gluten certificado Bio – 2x125gr", "precio": 5.72, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1342.png"}, {"id": 1340, "sku": "P.S.MSG", "nombre": "Pan de trigo sarraceno sin gluten certificado Bio – 445gr", "precio": 5.72, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1340.png"}, {"id": 1338, "sku": "P.S.HSG", "nombre": "Pan de hamburguesa sin gluten certificado Bio – 2x100gr", "precio": 4.45, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1338.png"}, {"id": 1336, "sku": "P.SSG", "nombre": "Panecillos de sarraceno sin gluten certificado Bio – 4x50gr", "precio": 4.45, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1336.png"}, {"id": 1334, "sku": "P.S.R", "nombre": "Pan rustico de sarraceno sin gluten certificado Bio – 250gr", "precio": 4.43, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1334.png"}, {"id": 1295, "sku": "C.T.S.S", "nombre": "Colines de trigo sarraceno con sésamo Bio sin gluten – 70gr", "precio": 4.03, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1295.png"}, {"id": 1293, "sku": "M.E.CH", "nombre": "Magdalenas de espelta con gotas de chocolate Bio – 300gr", "precio": 5.05, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1293.png"}, {"id": 1291, "sku": "M.E.SAZ", "nombre": "Magdalenas de espelta sin lactosa con sirope de agave Bio – 300gr", "precio": 4.62, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1291.png"}, {"id": 1289, "sku": "M.E.", "nombre": "Magdalenas de espelta integrales Bio – 300gr", "precio": 4.41, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1289.png"}, {"id": 1273, "sku": "MIXFS", "nombre": "Mix frutos secos Bio – 250gr", "precio": 5.68, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1273.png"}, {"id": 216, "sku": "21339", "nombre": "Tableta de Chocolate extra negro 85% Bio – 90gr", "precio": 4.86, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/216.png"}, {"id": 214, "sku": "21345", "nombre": "Tableta de Chocolate negro 55% con cereza y almendra Bio – 90gr", "precio": 3.84, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/214.png"}, {"id": 212, "sku": "21340", "nombre": "Tableta de Chocolate extra negro 72% de cacao con sal marina Bio – 90gr", "precio": 4.39, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/212.png"}, {"id": 208, "sku": "CCAO200GR", "nombre": "Cacao en polvo Bio – 200gr", "precio": 8.15, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/208.png"}, {"id": 206, "sku": "CREMA SIN", "nombre": "Crema de cacao sin azúcar añadido Bio – 200gr", "precio": 8.11, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/206.png"}, {"id": 204, "sku": "CREMA PROTE", "nombre": "Crema de cacao con avellanas y el 22% proteínas Bio – 200gr", "precio": 6.4, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/204.png"}, {"id": 202, "sku": "CREMAAVELLN", "nombre": "Crema de cacao y avellana Bio – 200gr", "precio": 5.95, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/202.png"}, {"id": 200, "sku": "CREMASSMO", "nombre": "Crema de cacao y sésamo Bio – 200gr", "precio": 5.21, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/200.png"}, {"id": 198, "sku": "CREMANRNJA", "nombre": "Crema de cacao y naranja Bio – 200gr", "precio": 5.49, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/198.png"}, {"id": 196, "sku": "CREMAAOVE", "nombre": "Crema de cacao y aove Bio – 200gr", "precio": 4.91, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/196.png"}, {"id": 173, "sku": "MGD100GR", "nombre": "Mango deshidratado Bio – 100gr", "precio": 3.15, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/173.png"}];
+
+const CATEGORIES = ["Panadería y repostería", "Chocolates", "Frutos secos", "Deshidratados"];
+const VALID_PRODUCTS = PRODUCTS.filter(p => CATEGORIES.includes(p.categoria) && p.precio <= 15);
+const BY_CATEGORY = {};
+CATEGORIES.forEach(cat => {
+  BY_CATEGORY[cat] = VALID_PRODUCTS.filter(p => p.categoria === cat);
+});
+
+const html = document.documentElement;
+
+// Generar páginas por categoría
+Object.entries(BY_CATEGORY).forEach(([cat, products]) => {
+  // Separador de categoría
+  const divider = document.createElement('div');
+  divider.className = 'page category-divider';
+  divider.innerHTML = `<h2>${cat}</h2>`;
+  html.appendChild(divider);
+
+  // Páginas de productos (6 por página)
+  for (let i = 0; i < products.length; i += 6) {
+    const page = document.createElement('div');
+    page.className = 'page grid-page';
+    const chunk = products.slice(i, i + 6);
+
+    chunk.forEach(p => {
+      const badges = `<div class="product-badges">
+        <span class="badge badge-bio">BIO</span>
+        ${p.sinGluten ? '<span class="badge badge-gf">SG</span>' : ''}
+        ${p.vegano ? '<span class="badge badge-veg">VEG</span>' : ''}
+      </div>`;
+
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <div class="product-photo">
+          <img src="${p.img}" alt="${p.nombre}" loading="lazy" onerror="this.style.opacity=0.15">
+        </div>
+        <div class="product-body">
+          ${badges}
+          <div class="product-name">${p.nombre}</div>
+          <div class="product-footer">
+            <span class="price">€${p.precio.toFixed(2)}</span>
+          </div>
+        </div>
+      `;
+      page.appendChild(card);
+    });
+
+    html.appendChild(page);
+  }
+});
+
+// Contraportada
+const backCover = document.createElement('div');
+backCover.className = 'page back-cover';
+backCover.innerHTML = `
+  <h3>Bioartesa 2012 S.L.</h3>
+  <p>Castilléjar, Granada</p>
+  <div class="divider"></div>
+  <p style="margin-top: 30px; font-weight: 600;">Distribuido por</p>
+  <h3>Chains of Brains</h3>
+  <p>Argón 70 S.L.</p>
+  <div class="divider"></div>
+  <p class="credits">bioartesa.es</p>
+`;
+html.appendChild(backCover);
+
+console.log(`Catálogo generado: ${VALID_PRODUCTS.length} productos en ${Object.keys(BY_CATEGORY).length} categorías`);
+</script>
+
+</body>
+</html>
