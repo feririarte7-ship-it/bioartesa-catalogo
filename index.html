@@ -10,395 +10,67 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { font-family: "Inter", -apple-system, "Segoe UI", sans-serif; background: #faf8f3; color: #2a2a2a; }
-
-  /* HEADER */
-  header {
-    background: linear-gradient(135deg, #2d2420 0%, #3a3030 100%);
-    color: white;
-    padding: 20px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-
-  .header-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .logo {
-    font-family: "Fraunces", serif;
-    font-size: 24px;
-    font-weight: 500;
-    color: #dab469;
-    white-space: nowrap;
-  }
-
-  .search-box {
-    flex: 1;
-    max-width: 500px;
-  }
-
-  .search-box input {
-    width: 100%;
-    padding: 12px 16px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    background: white;
-  }
-
+  header { background: linear-gradient(135deg, #2d2420 0%, #3a3030 100%); color: white; padding: 20px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .header-inner { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 20px; }
+  .logo { font-family: "Fraunces", serif; font-size: 24px; font-weight: 500; color: #dab469; white-space: nowrap; }
+  .search-box { flex: 1; max-width: 500px; }
+  .search-box input { width: 100%; padding: 12px 16px; border: none; border-radius: 6px; font-size: 14px; background: white; }
   .search-box input::placeholder { color: #999; }
-
-  .cart-icon {
-    font-size: 24px;
-    cursor: pointer;
-    background: #dab469;
-    color: #2d2420;
-    width: 44px;
-    height: 44px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-  }
-
-  /* LAYOUT PRINCIPAL */
-  .container {
-    max-width: 1400px;
-    margin: 20px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 280px 1fr 320px;
-    gap: 20px;
-    min-height: calc(100vh - 100px);
-  }
-
-  /* SIDEBAR FILTROS */
-  .sidebar-filters {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    height: fit-content;
-    position: sticky;
-    top: 100px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
-
-  .filter-section {
-    margin-bottom: 24px;
-  }
-
-  .filter-section h3 {
-    font-family: "Fraunces", serif;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #2a3a2d;
-    margin-bottom: 12px;
-  }
-
-  .filter-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    font-size: 13px;
-    color: #555;
-  }
-
+  .cart-icon { font-size: 24px; cursor: pointer; background: #dab469; color: #2d2420; width: 44px; height: 44px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 600; }
+  .container { max-width: 1400px; margin: 20px auto; padding: 0 20px; display: grid; grid-template-columns: 280px 1fr 320px; gap: 20px; min-height: calc(100vh - 100px); }
+  .sidebar-filters { background: white; border-radius: 8px; padding: 20px; height: fit-content; position: sticky; top: 100px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .filter-section { margin-bottom: 24px; }
+  .filter-section h3 { font-family: "Fraunces", serif; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #2a3a2d; margin-bottom: 12px; }
+  .filter-option { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; cursor: pointer; font-size: 13px; color: #555; }
   .filter-option input { cursor: pointer; }
-
-  .filter-option span {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-  }
-
+  .filter-option span { flex: 1; display: flex; justify-content: space-between; }
   .count { color: #999; font-size: 12px; }
-
-  .price-slider {
-    margin-top: 12px;
-  }
-
+  .price-slider { margin-top: 12px; }
   .price-slider input { width: 100%; }
-
-  .price-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #999;
-    margin-top: 8px;
-  }
-
-  /* GRID PRINCIPAL */
-  .main-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 16px;
-    background: white;
-    border-radius: 8px;
-  }
-
-  .count-line {
-    font-size: 13px;
-    color: #666;
-  }
-
-  .sort-select {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 13px;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-  }
-
-  /* CARD PRODUCTO */
-  .product-card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-  }
-
-  .product-image {
-    width: 100%;
-    aspect-ratio: 1;
-    background: #2a3a2d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .product-image img {
-    max-width: 85%;
-    max-height: 85%;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-    transition: transform 0.3s;
-  }
-
+  .price-labels { display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-top: 8px; }
+  .main-content { display: flex; flex-direction: column; }
+  .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 16px; background: white; border-radius: 8px; }
+  .count-line { font-size: 13px; color: #666; }
+  .sort-select { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .product-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.12); }
+  .product-image { width: 100%; aspect-ratio: 1; background: #2a3a2d; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .product-image img { max-width: 85%; max-height: 85%; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); transition: transform 0.3s; }
   .product-card:hover .product-image img { transform: scale(1.1); }
-
-  .product-info {
-    padding: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-  }
-
-  .badges {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  .badge {
-    font-size: 9px;
-    font-weight: 600;
-    padding: 3px 7px;
-    border-radius: 2px;
-    border: 1px solid;
-  }
+  .product-info { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge { font-size: 9px; font-weight: 600; padding: 3px 7px; border-radius: 2px; border: 1px solid; }
   .badge-bio { border-color: #6b7455; color: #6b7455; }
   .badge-gf { border-color: #b5824f; color: #b5824f; }
   .badge-veg { border-color: #a06b52; color: #a06b52; }
-
-  .product-name {
-    font-family: "Fraunces", serif;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.3;
-    color: #2a2a2a;
-  }
-
-  .product-weight {
-    font-size: 12px;
-    color: #999;
-  }
-
-  .product-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-    padding-top: 10px;
-    border-top: 1px solid #e8dcc8;
-  }
-
-  .price {
-    font-family: "Fraunces", serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #dab469;
-  }
-
-  .add-btn {
-    background: #2a3a2d;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 600;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: background 0.2s;
-  }
-
+  .product-name { font-family: "Fraunces", serif; font-size: 13px; font-weight: 500; line-height: 1.3; color: #2a2a2a; }
+  .product-weight { font-size: 12px; color: #999; }
+  .product-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 10px; border-top: 1px solid #e8dcc8; }
+  .price { font-family: "Fraunces", serif; font-size: 18px; font-weight: 600; color: #dab469; }
+  .add-btn { background: #2a3a2d; color: white; border: none; padding: 8px 12px; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: background 0.2s; }
   .add-btn:hover { background: #1a2a1d; }
-
-  /* CARRITO LATERAL */
-  .sidebar-cart {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    height: fit-content;
-    position: sticky;
-    top: 100px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
-
-  .sidebar-cart h2 {
-    font-family: "Fraunces", serif;
-    font-size: 18px;
-    margin-bottom: 16px;
-  }
-
-  .cart-items {
-    max-height: 300px;
-    overflow-y: auto;
-    margin-bottom: 16px;
-    border-bottom: 1px solid #e8dcc8;
-    padding-bottom: 16px;
-  }
-
-  .cart-item {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 12px;
-  }
-
-  .cart-item img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    background: #f0f0f0;
-    border-radius: 4px;
-  }
-
-  .cart-item-info {
-    flex: 1;
-  }
-
+  .sidebar-cart { background: white; border-radius: 8px; padding: 20px; height: fit-content; position: sticky; top: 100px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .sidebar-cart h2 { font-family: "Fraunces", serif; font-size: 18px; margin-bottom: 16px; }
+  .cart-items { max-height: 300px; overflow-y: auto; margin-bottom: 16px; border-bottom: 1px solid #e8dcc8; padding-bottom: 16px; }
+  .cart-item { display: flex; gap: 10px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; font-size: 12px; }
+  .cart-item img { width: 50px; height: 50px; object-fit: contain; background: #f0f0f0; border-radius: 4px; }
+  .cart-item-info { flex: 1; }
   .cart-item-name { font-weight: 600; color: #2a2a2a; }
   .cart-item-qty { color: #999; font-size: 11px; }
   .cart-item-remove { color: #dab469; cursor: pointer; font-size: 11px; }
-
-  .calc-card {
-    background: #f5f0e8;
-    border-radius: 6px;
-    padding: 12px;
-    margin-bottom: 16px;
-  }
-
-  .calc-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    margin-bottom: 8px;
-  }
-
-  .calc-row input {
-    width: 50px;
-    padding: 4px 6px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    font-size: 12px;
-    text-align: right;
-  }
-
-  .calc-result {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    padding: 6px 0;
-    border-top: 1px dashed #e8dcc8;
-  }
-
-  .calc-result.profit {
-    border-top: 1px solid #dab469;
-    font-weight: 600;
-    color: #dab469;
-    font-size: 16px;
-    padding-top: 10px;
-    margin-top: 8px;
-  }
-
-  .copy-btn {
-    width: 100%;
-    padding: 12px;
-    background: #2a3a2d;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    text-transform: uppercase;
-  }
-
+  .calc-card { background: #f5f0e8; border-radius: 6px; padding: 12px; margin-bottom: 16px; }
+  .calc-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 8px; }
+  .calc-row input { width: 50px; padding: 4px 6px; border: 1px solid #ddd; border-radius: 3px; font-size: 12px; text-align: right; }
+  .calc-result { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-top: 1px dashed #e8dcc8; }
+  .calc-result.profit { border-top: 1px solid #dab469; font-weight: 600; color: #dab469; font-size: 16px; padding-top: 10px; margin-top: 8px; }
+  .copy-btn { width: 100%; padding: 12px; background: #2a3a2d; color: white; border: none; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; text-transform: uppercase; }
   .copy-btn:hover { background: #1a2a1d; }
-
-  /* RESPONSIVE */
-  @media (max-width: 1200px) {
-    .container { grid-template-columns: 1fr; }
-    .sidebar-filters, .sidebar-cart { position: static; }
-  }
-
-  @media (max-width: 768px) {
-    .header-inner { flex-wrap: wrap; }
-    .search-box { max-width: 100%; }
-    .grid { grid-template-columns: repeat(2, 1fr); }
-  }
+  @media (max-width: 1200px) { .container { grid-template-columns: 1fr; } .sidebar-filters, .sidebar-cart { position: static; } }
+  @media (max-width: 768px) { .header-inner { flex-wrap: wrap; } .search-box { max-width: 100%; } .grid { grid-template-columns: repeat(2, 1fr); } }
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
 <header>
   <div class="header-inner">
     <div class="logo">🌾 Bioartesa</div>
@@ -410,48 +82,8 @@
     </div>
   </div>
 </header>
-
-<!-- CONTENIDO PRINCIPAL -->
 <div class="container">
-  <!-- SIDEBAR FILTROS -->
   <div class="sidebar-filters">
-    <div class="filter-section">
-      <h3>Categorías</h3>
-      <div class="filter-option">
-        <input type="checkbox" id="cat-panaderia" data-category="Panadería y repostería">
-        <span>
-          <label for="cat-panaderia">Panadería</label>
-          <span class="count">(32)</span>
-        </span>
-      </div>
-      <div class="filter-option" style="padding-left: 20px; font-size: 12px;">
-        <input type="checkbox" id="subcat-galletas" data-subcategory="Galletas">
-        <label for="subcat-galletas">Galletas</label>
-        <span class="count">(8)</span>
-      </div>
-      <div class="filter-option">
-        <input type="checkbox" id="cat-chocolates" data-category="Chocolates">
-        <span>
-          <label for="cat-chocolates">Chocolates</label>
-          <span class="count">(11)</span>
-        </span>
-      </div>
-      <div class="filter-option">
-        <input type="checkbox" id="cat-frutas-secas" data-category="Frutos secos">
-        <span>
-          <label for="cat-frutas-secas">Frutos Secos</label>
-          <span class="count">(19)</span>
-        </span>
-      </div>
-      <div class="filter-option">
-        <input type="checkbox" id="cat-deshidratadas" data-category="Frutas deshidratadas">
-        <span>
-          <label for="cat-deshidratadas">Frutas Deshidratadas</label>
-          <span class="count">(12)</span>
-        </span>
-      </div>
-    </div>
-
     <div class="filter-section">
       <h3>Certificaciones</h3>
       <div class="filter-option">
@@ -467,7 +99,6 @@
         <label for="filter-veg">Vegano</label>
       </div>
     </div>
-
     <div class="filter-section">
       <h3>Precio</h3>
       <div class="price-slider">
@@ -480,8 +111,6 @@
       </div>
     </div>
   </div>
-
-  <!-- GRID PRINCIPAL -->
   <div class="main-content">
     <div class="toolbar">
       <div class="count-line">Mostrando <strong id="product-count">0</strong> productos</div>
@@ -493,14 +122,11 @@
     </div>
     <div class="grid" id="grid"></div>
   </div>
-
-  <!-- CARRITO LATERAL -->
   <div class="sidebar-cart">
     <h2>Tu selección</h2>
     <div class="cart-items" id="cart-items">
       <p style="color: #999; text-align: center; font-size: 12px; padding: 20px 0;">Aún sin productos</p>
     </div>
-
     <div class="calc-card">
       <div class="calc-row">
         <label>Margen</label>
@@ -524,41 +150,24 @@
         <strong id="profit-total">€0.00</strong>
       </div>
     </div>
-
     <button class="copy-btn" onclick="copyBudget()">📋 Copiar presupuesto</button>
   </div>
 </div>
-
 <script>
-// DATOS
-const PRODUCTS = ;
-
-const state = {
-  search: "",
-  filters: { bio: false, sinGluten: false, vegano: false },
-  categories: new Set(),
-  priceMin: 2, priceMax: 15,
-  box: {},
-  sort: "name"
-};
-
+const PRODUCTS = [{"id": 11238, "sku": "G.PIS150", "nombre": "Galletas con pistacho y chocolate Sin gluten Bio 150gr", "descripcion": "Producto ecológico. Sin gluten, sin conservantes y sin aditivos. Alérgenos : contiene pistacho, huevos y trazas de lactosa.", "precio": 3.95, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/11238.png"}, {"id": 11234, "sku": "PANSS", "nombre": "Pan trigo sarraceno 100% con semillas Bio Sin gluten – 450gr", "descripcion": "Producto ecológico, sin conservantes, sin aditivos y sin gluten. Alérgenos: Ausencia de alérgenos. «Producto fabricado bajo pedido de lunes a miércoles, MÍNIMO 24hr para su fabricación»", "precio": 5.04, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/11234.png"}, {"id": 11232, "sku": "B.AVC", "nombre": "Bizcocho de avena con cacao sin gluten Bio 340gr", "descripcion": "Producto ecológico, sin lactosa, sin conservantes , sin aditivos y sin gluten Alérgenos : Huevo", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/11232.png"}, {"id": 10719, "sku": "BP100", "nombre": "Base de pizza de trigo sarraceno (100%) Bio sin gluten Certificado (2 und de 125GR)", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Envasada en atmósfera protectora. Alérgenos : libre de alérgenos, sin transgénicos.", "precio": 6.19, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/10719.png"}, {"id": 10651, "sku": "PS100", "nombre": "Pan de trigo sarraceno 100% Sin gluten certificado Bio – 445gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos: Ausencia de alérgenos", "precio": 6.19, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/10651.png"}, {"id": 7242, "sku": "NP150GR", "nombre": "Nueces Pecanas Bio – 250gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Frutos secos y derivados*", "precio": 8.98, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/7242.png"}, {"id": 6024, "sku": "TSA", "nombre": "Tostadas de trigo sarraceno y semillas Bio – 70gr", "descripcion": "Producto ecológico elaborado artesanalmente. Sin conservantes, sin aditivos. Apto para vegetarianos y Lácteo – vegetarianos. Alérgenos : Contiene sésamo y puede contener trazas de gluten, mostaza, fru", "precio": 3.85, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/6024.png"}, {"id": 4502, "sku": "", "nombre": "Pan proteico sin gluten certificado Bio – 445gr", "descripcion": "Sin gluten, sin transgénicos, sin aditivos ni conservantes. Apto para dietas keto, paleo y vegana. Alérgenos: libre de alérgenos.", "precio": 6.75, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/4502.png"}, {"id": 2422, "sku": "", "nombre": "Galletas de trigo sarraceno y coco sin gluten certificadas Bio – 150gr", "descripcion": "Producto ecológico. Sin gluten certificadas, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 4.27, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/2422.png"}, {"id": 1967, "sku": "BZ340GR", "nombre": "Bizcocho de espelta con zanahoria sin lactosa Bio – 340gr", "descripcion": "Producto ecológico, sin lactosa, sin conservantes y sin aditivos. Alérgenos : contiene gluten*, soja*, huevo*. Puede contener trazas de: sésamo* y frutos de cáscara*.", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1967.png"}, {"id": 1963, "sku": "B.A", "nombre": "Bizcocho de arroz y algarroba sin lactosa Bio – 340gr", "descripcion": "Producto ecológico, artesanal, sin lactosa, sin conservantes y sin aditivos. Alérgenos: contiene soja* y huevo*. Puede contener trazas de: gluten*, frutos de cáscara* y sésamo*.", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1963.png"}, {"id": 1961, "sku": "B.TS", "nombre": "Bizcocho de trigo sarraceno sin lactosa Bio – 340gr", "descripcion": "Producto ecológico, sin lactosa, sin conservantes y sin aditivos. Alérgenos: Contiene soja* y huevo*. Puede contener trazas de: gluten*, frutos de cáscara* y sésamo*", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1961.png"}, {"id": 1959, "sku": "BSAZ", "nombre": "Bizcocho de espelta con sirope de agave sin lactosa Bio – 340gr", "descripcion": "Producto ecológico, sin lactosa, sin conservantes y sin aditivos. Alérgenos : contiene gluten*, sésamo*, soja*, huevo*. Puede contener trazas de: frutos de cáscara*", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1959.png"}, {"id": 1954, "sku": "B.E.N.", "nombre": "Bizcocho de espelta con naranja confitada sin lactosa Bio – 340gr", "descripcion": "Producto ecológico, sin lactosa, sin conservantes y sin aditivos. Alérgenos : contiene gluten*, soja*, huevo*. Puede contener trazas de: sésamo* y frutos de cáscara*.", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1954.png"}, {"id": 1952, "sku": "B.E.FR.", "nombre": "Bizcocho de espelta con frutos secos sin lactosa Bio – 340gr", "descripcion": "Producto ecológico, sin lactosa, sin conservantes y sin aditivos. Alérgenos : contiene gluten, frutos de cáscara, soja, huevos. Puede contener trazas de: sésamo.", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1952.png"}, {"id": 1950, "sku": "B.E.", "nombre": "Bizcocho de espelta con chocolate sin lactosa Bio – 340gr", "descripcion": "Producto ecológico, sin lactosa, sin conservantes y sin aditivos. Alérgenos : contiene gluten*, soja*, huevo*. Puede contener trazas de: sésamo* y frutos de cáscara*.", "precio": 5.54, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1950.png"}, {"id": 1948, "sku": "B.E.CC", "nombre": "Bizcocho de espelta con cacao puro sin lactosa Bio – 340gr", "descripcion": "Producto ecológico, sin lactosa, sin conservantes y sin aditivos. Alérgenos : contiene gluten*, soja* y huevo*. Puede tener trazas de: sésamo* y frutos de cáscara*.", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1948.png"}, {"id": 1947, "sku": "B.E.J.", "nombre": "Bizcocho de espelta con jengibre sin lactosa Bio – 340gr", "descripcion": "Producto ecológico, sin lactosa, sin conservantes y sin aditivos. Alérgenos : contiene gluten*, soja*, huevo*. Puede contener trazas de: sésamo* y frutos de cáscara*.", "precio": 5.11, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1947.png"}, {"id": 1944, "sku": "P.E.P.P", "nombre": "Pan artesano de espelta bajo en sal con levadura madre Bio – 500gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Cereales que contienen gluten* «Producto fabricado bajo pedido de lunes a miércoles, MÍNIMO 24hr para su fabricación»", "precio": 4.15, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1944.png"}, {"id": 1942, "sku": "P.A", "nombre": "Pan artesano de arroz Bio Sin gluten – 400gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos: Ausencia de alérgenos «Producto fabricado bajo pedido de lunes a miércoles, MÍNIMO 24hr para su fabricación»", "precio": 4.06, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1942.png"}, {"id": 1940, "sku": "P.T.S500", "nombre": "Pan artesano de trigo sarraceno cortado Bio Sin gluten – 500gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos: Ausencia de alérgenos «Producto fabricado bajo pedido de lunes a miércoles, MÍNIMO 24hr para su fabricación»", "precio": 4.23, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1940.png"}, {"id": 1932, "sku": "P.C.P.E", "nombre": "Pan de centeno puro Bio – 500gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene gluten * «Producto fabricado bajo pedido de lunes a miércoles, MÍNIMO 24hr para su fabricación»", "precio": 3.69, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1932.png"}, {"id": 1930, "sku": "RNE150GR", "nombre": "Rosquillas de naranja y espelta Bio – 150gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene gluten* y huevo*.", "precio": 4.08, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1930.png"}, {"id": 1924, "sku": "G.A.N.CH", "nombre": "Galletas de avena con naranja y chocolate Bio – 150gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene gluten* y huevo*. Contiene trazas de lactosa.", "precio": 3.95, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1924.png"}, {"id": 1921, "sku": "G.TS", "nombre": "Galletas de trigo sarraceno y algarroba Bio – 150gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene huevo*. Puede tener trazas de gluten*.", "precio": 3.53, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1921.png"}, {"id": 1916, "sku": "G.MYQ", "nombre": "Galletas andinas de maca y quinoa Bio – 150gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene gluten* y huevo*.", "precio": 3.53, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1916.png"}, {"id": 1903, "sku": "G.TM.CYCH", "nombre": "Galletas de té matcha con chía y chocolate Bio – 150gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos: contiene gluten* y huevo*. Contiene trazas de lactosa.", "precio": 3.53, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1903.png"}, {"id": 1899, "sku": "G.AYJ", "nombre": "Galletas de avena con jengibre y chía Bio – 150gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos: contiene gluten* y huevo*.", "precio": 3.51, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1899.png"}, {"id": 1896, "sku": "C.E.T.A.SA", "nombre": "Crespillos de espelta con tomate y ajo Bio – 150gr", "descripcion": "Producto ecológico. Sin conservantes y sin aditivos. Alérgenos : contiene gluten*.", "precio": 3.69, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1896.png"}, {"id": 1894, "sku": "C.E.C.", "nombre": "Crespillos de espelta con cañamones Bio – 150gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene gluten*.", "precio": 3.69, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1894.png"}, {"id": 1892, "sku": "C.E.P.S", "nombre": "Crespillos de espelta con pipas y sésamo Bio – 150gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene gluten* y sésamo*.", "precio": 3.69, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1892.png"}, {"id": 1887, "sku": "C.A150GR", "nombre": "Crujiente de Algas y Espelta Bio – 150gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos: Contiene gluten y puede contener trazas de sésamo, de molusco, pescado y crustáceos en algas marinas por ecosistema.", "precio": 4.35, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1887.png"}, {"id": 1885, "sku": "P.A.E.I160GR", "nombre": "Pan Ácimo con espelta Bio – 150gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos: Contiene gluten, semillas de sésamo", "precio": 3.84, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1885.png"}, {"id": 1804, "sku": "PSTP100gr", "nombre": "Pistacho natural pelado Bio – 100gr", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico Alérgenos: contiene fruto de cáscara*", "precio": 4.89, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1804.png"}, {"id": 1793, "sku": "PST.T.S.S", "nombre": "Pistacho tostado sin sal Bio – 100gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Producto alérgeno* puede contener trazas de gluten* y sésamo*.", "precio": 3.7, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1793.png"}, {"id": 1791, "sku": "PST.T.CS", "nombre": "Pistacho tostado con sal Bio – 100gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Producto alérgeno*, puede contener trazas de gluten* y sésamo*", "precio": 3.7, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1791.png"}, {"id": 1789, "sku": "PSTCH 250GR", "nombre": "Pistacho natural Bio – 250gr", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico Alérgenos: contiene fruto de cáscara*", "precio": 6.93, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1789.png"}, {"id": 1781, "sku": "PÐ90GR", "nombre": "Piñones Bio – 90gr", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico Alérgenos : Producto alérgeno, puede contener trazas de cacahuetes y otros frutos secos*", "precio": 7.24, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1781.png"}, {"id": 1780, "sku": "PS1KG", "nombre": "Pasas sultanas Bio – 1kg", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico. Alérgenos : Ausencia de alérgenos", "precio": 11.79, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1780.png"}, {"id": 1779, "sku": "PSSULT", "nombre": "Pasas sultanas Bio – 500gr", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico. Alérgenos : Ausencia de alérgenos", "precio": 6.29, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1779.png"}, {"id": 1778, "sku": "PS 250GR", "nombre": "Pasas sultanas Bio – 250gr", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico. Alérgenos : Ausencia de alérgenos", "precio": 3.67, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1778.png"}, {"id": 1774, "sku": "NM 250GR", "nombre": "Nuez de macadamia Bio – 250gr", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico Alérgenos : Producto alérgeno", "precio": 9.48, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1774.png"}, {"id": 1769, "sku": "NB 250GR", "nombre": "Nuez del Brasil Bio – 250gr", "descripcion": "Sin gluten, sin conservantes y aditivos. Producto ecológico Alérgenos : contiene fruto de cáscara*. Puede contener trazas de soja*.", "precio": 10.22, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1769.png"}, {"id": 1764, "sku": "NCE 250GR", "nombre": "Nueces mitades Bio – 250gr", "descripcion": "Sin gluten, sin aditivos ni conservantes. Producto ecológico. Alérgenos: Producto alérgeno.", "precio": 5.33, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1764.png"}, {"id": 1761, "sku": "CCH1KG", "nombre": "Cacahuetes repelados crudos Bio – 1kg", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico Alérgenos : producto alérgeno", "precio": 8.58, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1761.png"}, {"id": 1756, "sku": "CCH 250GR", "nombre": "Cacahuetes repelados crudos Bio – 250gr", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico Alérgenos : producto alérgeno", "precio": 2.86, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1756.png"}, {"id": 1751, "sku": "AV250GR", "nombre": "Avellanas crudas Bio – 250gr", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico Alérgenos : Producto alérgeno", "precio": 8.34, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1751.png"}, {"id": 1746, "sku": "ANCRD100GR", "nombre": "Anacardos crudos Bio – 250gr", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico Alérgenos : Producto alérgeno", "precio": 5.57, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1746.png"}, {"id": 1732, "sku": "A.S.P.TO100GR", "nombre": "Almendras sin piel tostadas sin sal Bio – 100gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Producto alérgeno* puede contener trazas de gluten y sésamo*", "precio": 3.56, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1732.png"}, {"id": 1728, "sku": "A.S.P.TO.CS", "nombre": "Almendras sin piel tostadas con sal Bio – 100gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Producto alérgeno, puede contener trazas de gluten y sésamo*", "precio": 3.56, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1728.png"}, {"id": 1726, "sku": "A.S.P.CRD250GR", "nombre": "Almendras sin piel cruda Bio – 250gr", "descripcion": "Sin gluten, sin conservantes y sin aditivos. Producto ecológico Alérgenos : Producto alérgeno", "precio": 6.47, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1726.png"}, {"id": 1713, "sku": "A.C.P.TOS100G", "nombre": "Almendras con piel tostadas sin sal Bio – 100gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Producto alérgeno*, Puede contener trazas de gluten y sésamo* contiene frutos de cáscara*.", "precio": 3.24, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1713.png"}, {"id": 1711, "sku": "A.C.P.TO.S100", "nombre": "Almendras con piel tostadas con sal Bio – 100gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Producto alérgeno*, puede contener trazas de gluten y sésamo*", "precio": 3.24, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1711.png"}, {"id": 1709, "sku": "A.C.P. CR250GR", "nombre": "Almendra con piel cruda Bio – 250gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Producto alérgeno*", "precio": 5.71, "categoria": "Frutos secos", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1709.png"}, {"id": 1593, "sku": "TOMTMO100GR", "nombre": "Tomate molido sin sal deshidratado Bio – 100gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 4.13, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1593.png"}, {"id": 1589, "sku": "TOMTEN100GR", "nombre": "Tomates en mitades deshidratado sin sal Bio – 100gr", "descripcion": "Producto ecológico. Sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 4.1, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1589.png"}, {"id": 1585, "sku": "PLD100GR", "nombre": "Plátano deshidratado Bio – 100gr", "descripcion": "Producto ecológico. Sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 4.63, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1585.png"}, {"id": 1580, "sku": "PÐD100GR", "nombre": "Piña deshidratada Bio – 100gr", "descripcion": "Producto ecológico. Sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos.", "precio": 4.81, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1580.png"}, {"id": 1576, "sku": "MRBL75GR", "nombre": "Moras blancas deshidratadas Bio – 75gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 3.04, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1576.png"}, {"id": 1571, "sku": "MIXDH200GR", "nombre": "Mix frutas deshidratadas Bio – 200gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Trazas de gluten, sésamo y frutos de cascara.", "precio": 5.82, "categoria": "Deshidratados", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1571.png"}, {"id": 1566, "sku": "JNGBREA1KG", "nombre": "Jengibre en dados con azúcar de caña Bio – 1kg", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 13.74, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1566.png"}, {"id": 1564, "sku": "JNGBREA200GR", "nombre": "Jengibre en dados con azúcar de caña Bio – 200gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 3.57, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1564.png"}, {"id": 1562, "sku": "HDN1KG", "nombre": "Higos Deshidratados Bio – 1kg", "descripcion": "Producto ecológico. Sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 11.48, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1562.png"}, {"id": 1560, "sku": "HDN250GR", "nombre": "Higos deshidratados Bio – 250gr", "descripcion": "Producto ecológico. Sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 3.59, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1560.png"}, {"id": 1557, "sku": "COCOR1KG", "nombre": "Coco rallado Bio – 1kg", "descripcion": "Productos ecológicos, sin gluten*, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos*", "precio": 10.59, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1557.png"}, {"id": 1556, "sku": "COCO R 250GR", "nombre": "Coco rallado Bio – 250gr", "descripcion": "Productos ecológicos, sin gluten*, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos*", "precio": 3.98, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1556.png"}, {"id": 1555, "sku": "CHC 1KG", "nombre": "Chips de coco Bio – 1kg", "descripcion": "Productos ecológicos, sin gluten*, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos*", "precio": 11.99, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1555.png"}, {"id": 1554, "sku": "CHC 250GR", "nombre": "Chips de coco Bio – 250gr", "descripcion": "Productos ecológicos, sin gluten*, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos*", "precio": 3.71, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1554.png"}, {"id": 1550, "sku": "CRP250GR", "nombre": "Ciruelas pasas sin hueso Bio – 250gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos*", "precio": 5.46, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1550.png"}, {"id": 1546, "sku": "BGD200GR", "nombre": "Bayas de goji Bio – 200gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos.", "precio": 5.48, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1546.png"}, {"id": 1541, "sku": "21360", "nombre": "Tableta de Chocolate negro 55% con frambuesa Bio – 90gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Puede contener trazas de: gluten *, huevo *, leche/lactosa *, frutos de cáscara *.", "precio": 4.01, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1541.png"}, {"id": 1537, "sku": "21361", "nombre": "Tableta de Chocolate con leche 40% de cacao con trozos de caramelo y sal marina Bio – 90gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Puede contener trazas de: gluten *, huevo *, leche/lactosa *, frutos de cáscara *.", "precio": 3.6, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1537.png"}, {"id": 1421, "sku": "OABD4 250GR", "nombre": "Orejones de albaricoque deshidratados Bio – 250gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 6.47, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1421.png"}, {"id": 1418, "sku": "ARND RJ 100GR", "nombre": "Arándanos rojos deshidratados sin azúcar añadida Bio – 100gr", "descripcion": "Producto ecológico, sin gluten, sin azúcar añadida, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos.", "precio": 3.77, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1418.png"}, {"id": 1364, "sku": "G.C.SA", "nombre": "Galletas de coco sin huevo con sirope de agave Bio – 150gr", "descripcion": "Producto ecológico, sin huevo, sin conservantes y sin aditivos. Alérgenos : contiene gluten *.", "precio": 3.51, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1364.png"}, {"id": 1354, "sku": "G.A.A BAO", "nombre": "Galletas de arroz con coco y baobab sin gluten Bio – 135gr", "descripcion": "Producto ecologico, sin gluten, sin azúcar añadido, sin conservantes y sin aditivos. Alérgenos: Sin gluten, sin leche/lactosa, con huevo, puede contener trazas de sésamo.", "precio": 4.89, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1354.png"}, {"id": 1352, "sku": "G.A.A.CH", "nombre": "Galletas de arroz con arándanos y chía sin gluten Bio – 135gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : no contiene gluten, sin leche/lactosa. Contiene huevo. Puede contener trazas de sésamo*", "precio": 4.89, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1352.png"}, {"id": 1350, "sku": "G.A.A.CHO", "nombre": "Galletas de arroz con almendras y chocolate sin gluten Bio – 135gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos: no contiene gluten. Contiene huevo y frutos secos. Puede contener trazas de leche/lactosa y sésamo.", "precio": 4.89, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": false, "img": "images/1350.png"}, {"id": 1346, "sku": "PI.PR", "nombre": "Base de Pizza proteica sin gluten certificada Bio – 2x125gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Envasada en atmósfera protectora. Alérgenos : libre de alérgenos, sin transgénicos.", "precio": 7.2, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1346.png"}, {"id": 1342, "sku": "P.S.BPSG", "nombre": "Base de pizza sin gluten certificado Bio – 2x125gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes, sin azúcar añadida y sin aditivos. Envasado en atmósfera protectora. Alérgenos: Producto libre de alérgenos. Sin transgénicos.", "precio": 5.72, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1342.png"}, {"id": 1340, "sku": "P.S.MSG", "nombre": "Pan de trigo sarraceno sin gluten certificado Bio – 445gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : libre de alérgenos.", "precio": 5.72, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1340.png"}, {"id": 1338, "sku": "P.S.HSG", "nombre": "Pan de hamburguesa sin gluten certificado Bio – 2x100gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Envasado en atmósfera protectora. Alérgenos : libre de alérgenos, sin TRANSGÉNICOS.", "precio": 4.45, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1338.png"}, {"id": 1336, "sku": "P.SSG", "nombre": "Panecillos de sarraceno sin gluten certificado Bio – 4x50gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Envasado en atmósfera protectora. Alérgenos : Producto libre de gluten. Sin TRANSGÉNICOS", "precio": 4.45, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1336.png"}, {"id": 1334, "sku": "P.S.R", "nombre": "Pan rustico de sarraceno sin gluten certificado Bio – 250gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Envasado en atmósfera protectora. Alérgenos : libre de alérgenos.", "precio": 4.43, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1334.png"}, {"id": 1295, "sku": "C.T.S.S", "nombre": "Colines de trigo sarraceno con sésamo Bio sin gluten – 70gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Sésamo, maíz y puede contener trazas de soja . No apto para fenilcetonúricos .", "precio": 4.03, "categoria": "Panadería y repostería", "bio": true, "sinGluten": true, "vegano": true, "img": "images/1295.png"}, {"id": 1293, "sku": "M.E.CH", "nombre": "Magdalenas de espelta con gotas de chocolate Bio – 300gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene gluten*, soja*, huevo*. Puede llevar trazas de sésamo* y frutos de cáscara*.", "precio": 5.05, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1293.png"}, {"id": 1291, "sku": "M.E.SAZ", "nombre": "Magdalenas de espelta sin lactosa con sirope de agave Bio – 300gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene gluten*, soja*, huevo*. Puede contener trazas de: sésamo* y frutos de cáscara*.", "precio": 4.62, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1291.png"}, {"id": 1289, "sku": "M.E.", "nombre": "Magdalenas de espelta integrales Bio – 300gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Contiene gluten*, soja*, huevo*, puede contener sésamo* y frutos de cáscara*", "precio": 4.41, "categoria": "Panadería y repostería", "bio": true, "sinGluten": false, "vegano": false, "img": "images/1289.png"}, {"id": 1273, "sku": "MIXFS", "nombre": "Mix frutos secos Bio – 250gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene frutos de cáscara* y trazas de gluten.", "precio": 5.68, "categoria": "Frutos secos", "bio": true, "sinGluten": false, "vegano": true, "img": "images/1273.png"}, {"id": 216, "sku": "21339", "nombre": "Tableta de Chocolate extra negro 85% Bio – 90gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : contiene soja *. Puede contener trazas de: gluten *, huevo *, leche/lactosa * y frutos de cáscara *.", "precio": 4.86, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/216.png"}, {"id": 214, "sku": "21345", "nombre": "Tableta de Chocolate negro 55% con cereza y almendra Bio – 90gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos. Alérgenos : Contiene soja* y frutos de cáscara *. Puede contener trazas de: gluten *, huevo *, leche/lactosa *.", "precio": 3.84, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/214.png"}, {"id": 212, "sku": "21340", "nombre": "Tableta de Chocolate extra negro 72% de cacao con sal marina Bio – 90gr", "descripcion": "Producto ecológico, sin conservantes y sin aditivos Alérgenos : Puede contener trazas de: gluten *, huevo *, soja *, leche/lactosa *, frutos de cáscara *.", "precio": 4.39, "categoria": "Chocolates", "bio": true, "sinGluten": false, "vegano": true, "img": "images/212.png"}, {"id": 208, "sku": "CCAO200GR", "nombre": "Cacao en polvo Bio – 200gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alcalinizado Alérgenos : Ausencia de alérgenos", "precio": 8.15, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/208.png"}, {"id": 206, "sku": "CREMA SIN", "nombre": "Crema de cacao sin azúcar añadido Bio – 200gr", "descripcion": "Sin azúcar añadido, sin aceite de palma, sin gluten, sin leche. Producto Ecológico, vegano. Alérgenos : libre de alérgenos.", "precio": 8.11, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/206.png"}, {"id": 204, "sku": "CREMA PROTE", "nombre": "Crema de cacao con avellanas y el 22% proteínas Bio – 200gr", "descripcion": "Sin aceite de palma, sin gluten, sin leche. Producto Ecológico, vegano. Alérgenos : contiene frutos de cáscara *. Puede contener trazas de: cacahuetes *, soja * y sésamo", "precio": 6.4, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/204.png"}, {"id": 202, "sku": "CREMAAVELLN", "nombre": "Crema de cacao y avellana Bio – 200gr", "descripcion": "Sin aceite de palma, sin gluten, sin leche. Producto Ecológico, vegano. Alérgenos : contiene frutos de cáscara *. Puede contener trazas de: cacahuetes * y sésamo.", "precio": 5.95, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/202.png"}, {"id": 200, "sku": "CREMASSMO", "nombre": "Crema de cacao y sésamo Bio – 200gr", "descripcion": "Sin aceite de palma, sin gluten, sin leche. Producto ecológico, vegano. Alérgenos : contiene sésamo *. Puede contener trazas de: cacahuetes * y frutos de cáscara *.", "precio": 5.21, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/200.png"}, {"id": 198, "sku": "CREMANRNJA", "nombre": "Crema de cacao y naranja Bio – 200gr", "descripcion": "Sin aceite de palma, si gluten, sin leche. Producto Ecológico, vegano. Alérgenos : libre de alérgenos.", "precio": 5.49, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/198.png"}, {"id": 196, "sku": "CREMAAOVE", "nombre": "Crema de cacao y aove Bio – 200gr", "descripcion": "Sin aceite de palma, sin gluten, sin leche. Producto Ecológico, vegano. Alérgenos : libre de alérgenos.", "precio": 4.91, "categoria": "Chocolates", "bio": true, "sinGluten": true, "vegano": true, "img": "images/196.png"}, {"id": 173, "sku": "MGD100GR", "nombre": "Mango deshidratado Bio – 100gr", "descripcion": "Producto ecológico, sin gluten, sin conservantes y sin aditivos. Alérgenos : Ausencia de alérgenos", "precio": 3.15, "categoria": "Deshidratados", "bio": true, "sinGluten": true, "vegano": true, "img": "images/173.png"}];
+const state = { search: "", filters: { bio: false, sinGluten: false, vegano: false }, priceMin: 2, priceMax: 15, box: {}, sort: "name" };
 function render() {
   const filtered = PRODUCTS.filter(p => {
     if (state.search && !p.nombre.toLowerCase().includes(state.search.toLowerCase())) return false;
     if (state.filters.bio && !p.bio) return false;
     if (state.filters.sinGluten && !p.sinGluten) return false;
     if (state.filters.vegano && !p.vegano) return false;
-    if (state.categories.size > 0 && !state.categories.has(p.categoria)) return false;
     if (p.precio < state.priceMin || p.precio > state.priceMax) return false;
     return true;
   });
-
-  // Ordenar
   if (state.sort === "price-asc") filtered.sort((a,b) => a.precio - b.precio);
   else if (state.sort === "price-desc") filtered.sort((a,b) => b.precio - a.precio);
   else filtered.sort((a,b) => a.nombre.localeCompare(b.nombre));
-
-  // Renderizar grid
   document.getElementById("grid").innerHTML = filtered.map(p => `
     <div class="product-card">
       <div class="product-image">
@@ -579,120 +188,47 @@ function render() {
       </div>
     </div>
   `).join('');
-
   document.getElementById("product-count").textContent = filtered.length;
-  renderBox();
-  renderCalc();
+  renderBox(); renderCalc();
 }
-
-function addToBox(id) {
-  state.box[id] = (state.box[id] || 0) + 1;
-  render();
-}
-
-function removeFromBox(id) {
-  delete state.box[id];
-  render();
-}
-
+function addToBox(id) { state.box[id] = (state.box[id] || 0) + 1; render(); }
+function removeFromBox(id) { delete state.box[id]; render(); }
 function renderBox() {
-  const items = Object.entries(state.box).map(([id, qty]) => {
-    const p = PRODUCTS.find(x => x.id == id);
-    return { p, qty };
-  });
-
+  const items = Object.entries(state.box).map(([id, qty]) => { const p = PRODUCTS.find(x => x.id == id); return { p, qty }; });
   document.getElementById("cart-count").textContent = Object.values(state.box).reduce((a,b) => a+b, 0);
-
-  if (items.length === 0) {
-    document.getElementById("cart-items").innerHTML = '<p style="color: #999; text-align: center; font-size: 12px; padding: 20px 0;">Aún sin productos</p>';
-  } else {
-    document.getElementById("cart-items").innerHTML = items.map(({p, qty}) => `
-      <div class="cart-item">
-        <img src="${p.img}">
-        <div class="cart-item-info">
-          <div class="cart-item-name">${p.nombre.substring(0,30)}...</div>
-          <div class="cart-item-qty">${qty}× €${p.precio.toFixed(2)}</div>
-          <div class="cart-item-remove" onclick="removeFromBox(${p.id})">Eliminar</div>
-        </div>
-      </div>
-    `).join('');
-  }
+  if (items.length === 0) { document.getElementById("cart-items").innerHTML = '<p style="color: #999; text-align: center; font-size: 12px; padding: 20px 0;">Aún sin productos</p>'; }
+  else { document.getElementById("cart-items").innerHTML = items.map(({p, qty}) => `<div class="cart-item"><img src="${p.img}"><div class="cart-item-info"><div class="cart-item-name">${p.nombre.substring(0,30)}...</div><div class="cart-item-qty">${qty}× €${p.precio.toFixed(2)}</div><div class="cart-item-remove" onclick="removeFromBox(${p.id})">Eliminar</div></div></div>`).join(''); }
 }
-
-function boxCost() {
-  return Object.entries(state.box).reduce((sum, [id, qty]) => sum + PRODUCTS.find(x => x.id == id).precio * qty, 0);
-}
-
+function boxCost() { return Object.entries(state.box).reduce((sum, [id, qty]) => sum + PRODUCTS.find(x => x.id == id).precio * qty, 0); }
 function renderCalc() {
   const margin = Number(document.getElementById("margin").value);
   document.getElementById("margin-val").textContent = margin + '%';
   const numBoxes = Math.max(1, Number(document.getElementById("num-boxes").value) || 1);
-
   const costPerBox = boxCost();
   const pvpPerBox = margin < 100 ? costPerBox / (1 - margin/100) : 0;
   const profitTotal = (pvpPerBox - costPerBox) * numBoxes;
-
   document.getElementById("cost-per-box").textContent = '€' + costPerBox.toFixed(2);
   document.getElementById("pvp-per-box").textContent = '€' + pvpPerBox.toFixed(2);
   document.getElementById("profit-total").textContent = '€' + profitTotal.toFixed(2);
 }
-
 function copyBudget() {
-  const items = Object.entries(state.box).map(([id, qty]) => {
-    const p = PRODUCTS.find(x => x.id == id);
-    return `${qty}x ${p.nombre} – €${p.precio.toFixed(2)}`;
-  });
+  const items = Object.entries(state.box).map(([id, qty]) => { const p = PRODUCTS.find(x => x.id == id); return `${qty}x ${p.nombre} – €${p.precio.toFixed(2)}`; });
   const margin = Number(document.getElementById("margin").value);
   const numBoxes = Number(document.getElementById("num-boxes").value) || 1;
   const costPerBox = boxCost();
   const pvpPerBox = margin < 100 ? costPerBox / (1 - margin/100) : 0;
   const profitTotal = (pvpPerBox - costPerBox) * numBoxes;
-
   const text = `*Bioartesa — Welcome Box*\n\n${items.join('\n')}\n\nCoste por caja: €${costPerBox.toFixed(2)}\nMargen: ${margin}%\nPVP por caja: €${pvpPerBox.toFixed(2)}\n\nCajas: ${numBoxes}\n*Beneficio total: €${profitTotal.toFixed(2)}*`;
-  navigator.clipboard.writeText(text).then(() => alert('Copiad al portapapeles'));
+  navigator.clipboard.writeText(text).then(() => alert('Copiado al portapapeles'));
 }
-
-// EVENT LISTENERS
-document.getElementById("search").addEventListener("input", (e) => {
-  state.search = e.target.value.trim();
-  render();
-});
-
-document.querySelectorAll('[data-category], [data-filter]').forEach(el => {
-  el.addEventListener("change", () => {
-    if (el.dataset.category) {
-      if (el.checked) state.categories.add(el.dataset.category);
-      else state.categories.delete(el.dataset.category);
-    } else if (el.dataset.filter) {
-      state.filters[el.dataset.filter] = el.checked;
-    }
-    render();
-  });
-});
-
-document.getElementById("sort").addEventListener("change", (e) => {
-  state.sort = e.target.value;
-  render();
-});
-
-document.getElementById("price-min").addEventListener("input", (e) => {
-  state.priceMin = parseFloat(e.target.value);
-  document.getElementById("price-min-val").textContent = state.priceMin.toFixed(2);
-  render();
-});
-
-document.getElementById("price-max").addEventListener("input", (e) => {
-  state.priceMax = parseFloat(e.target.value);
-  document.getElementById("price-max-val").textContent = state.priceMax.toFixed(2);
-  render();
-});
-
+document.getElementById("search").addEventListener("input", (e) => { state.search = e.target.value.trim(); render(); });
+document.querySelectorAll('[data-filter]').forEach(el => { el.addEventListener("change", () => { state.filters[el.dataset.filter] = el.checked; render(); }); });
+document.getElementById("sort").addEventListener("change", (e) => { state.sort = e.target.value; render(); });
+document.getElementById("price-min").addEventListener("input", (e) => { state.priceMin = parseFloat(e.target.value); document.getElementById("price-min-val").textContent = state.priceMin.toFixed(2); render(); });
+document.getElementById("price-max").addEventListener("input", (e) => { state.priceMax = parseFloat(e.target.value); document.getElementById("price-max-val").textContent = state.priceMax.toFixed(2); render(); });
 document.getElementById("margin").addEventListener("input", renderCalc);
 document.getElementById("num-boxes").addEventListener("input", renderCalc);
-
-// Init
 render();
 </script>
-
 </body>
 </html>
